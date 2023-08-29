@@ -1,7 +1,7 @@
 
-**API URL**: ``https://api.fateslist.xyz``
+**API URL**: ``https://fates-api.select-list.xyz``
 
-**Widgets Documentation:** ``https://lynx.fateslist.xyz/widgets`` (docs for widgets available at https://lynx.fateslist.xyz/widgets)
+**Widgets Documentation:** ``https://fates-lynx.select-list.xyz/widgets`` 
 
 ## Authorization
 
@@ -31,6 +31,8 @@ you prefix the token with `User`. **A access token (for custom clients)
 can also be used on *most* endpoints as long as the token is prefixed with 
 ``Frostpaw``**
 
+- **Special:** These endpoint employ their own authentication system (such as ``slwebset``)
+
 ## Base Response
 
 A default API Response will be of the below format:
@@ -44,11 +46,11 @@ A default API Response will be of the below format:
 ```
 
 ## Index
-### GET `https://api.fateslist.xyz`/index
+### GET `https://fates-api.select-list.xyz`/index
 Returns the index for bots and servers
 **Query Parameters**
 
-- **target_type** => i32 [ex 1]
+- **target_type** => i32 [1]
 
 
 
@@ -57,82 +59,103 @@ Returns the index for bots and servers
 
 **Response Body**
 
-- **new** => (Array) Struct IndexBot 
-	- **guild_count** => i64 [ex 30]
-	- **description** => string [ex "My description"]
-	- **banner** => string [ex "My banner or default banner url"]
-	- **votes** => i64 [ex 40]
-	- **state** => i32 [ex 3]
+- **random** => Struct IndexBot 
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
 	- **flags** => (Array) 
-	- **created_at** => string [ex "2022-06-04T04:55:36.320062640Z"]
+	- **created_at** => string ["2023-08-29T15:17:52.571342489Z"]
+
+
+
+- **new** => (Array) Struct IndexBot 
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
+	- **user** => Struct User 
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
+
+
+
+	- **flags** => (Array) 
+	- **created_at** => string ["2023-08-29T15:17:52.571322234Z"]
 
 
 
 - **top_voted** => (Array) Struct IndexBot 
-	- **guild_count** => i64 [ex 30]
-	- **description** => string [ex "My description"]
-	- **banner** => string [ex "My banner or default banner url"]
-	- **votes** => i64 [ex 40]
-	- **state** => i32 [ex 3]
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
 	- **flags** => (Array) 
-	- **created_at** => string [ex "2022-06-04T04:55:36.320062640Z"]
+	- **created_at** => string ["2023-08-29T15:17:52.571322234Z"]
 
 
 
 - **certified** => (Array) Struct IndexBot 
-	- **guild_count** => i64 [ex 30]
-	- **description** => string [ex "My description"]
-	- **banner** => string [ex "My banner or default banner url"]
-	- **votes** => i64 [ex 40]
-	- **state** => i32 [ex 3]
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
 	- **flags** => (Array) 
-	- **created_at** => string [ex "2022-06-04T04:55:36.320062640Z"]
+	- **created_at** => string ["2023-08-29T15:17:52.571322234Z"]
 
 
 
 - **tags** => (Array) Struct Tag 
-	- **name** => string [ex ""]
-	- **iconify_data** => string [ex ""]
-	- **id** => string [ex ""]
+	- **name** => string [""]
+	- **iconify_data** => string [""]
+	- **id** => string [""]
 	- **owner_guild** => None (unknown value type)
 
 
 
 - **features** => (Array) Struct Feature 
-	- **id** => string [ex ""]
-	- **name** => string [ex ""]
-	- **viewed_as** => string [ex ""]
-	- **description** => string [ex ""]
+	- **id** => string [""]
+	- **name** => string [""]
+	- **viewed_as** => string [""]
+	- **description** => string [""]
 
 
 
@@ -143,6 +166,23 @@ Returns the index for bots and servers
 
 ```json
 {
+    "random": {
+        "guild_count": 30,
+        "description": "My description",
+        "banner": "My banner or default banner url",
+        "votes": 40,
+        "state": 3,
+        "user": {
+            "id": "",
+            "username": "",
+            "disc": "",
+            "avatar": "",
+            "bot": false,
+            "status": "Unknown"
+        },
+        "flags": [],
+        "created_at": "2023-08-29T15:17:52.571342489Z"
+    },
     "new": [
         {
             "guild_count": 30,
@@ -159,7 +199,7 @@ Returns the index for bots and servers
                 "status": "Unknown"
             },
             "flags": [],
-            "created_at": "2022-06-04T04:55:36.320062640Z"
+            "created_at": "2023-08-29T15:17:52.571322234Z"
         }
     ],
     "top_voted": [
@@ -178,7 +218,7 @@ Returns the index for bots and servers
                 "status": "Unknown"
             },
             "flags": [],
-            "created_at": "2022-06-04T04:55:36.320062640Z"
+            "created_at": "2023-08-29T15:17:52.571322234Z"
         }
     ],
     "certified": [
@@ -197,7 +237,7 @@ Returns the index for bots and servers
                 "status": "Unknown"
             },
             "flags": [],
-            "created_at": "2022-06-04T04:55:36.320062640Z"
+            "created_at": "2023-08-29T15:17:52.571322234Z"
         }
     ],
     "tags": [
@@ -223,8 +263,60 @@ Returns the index for bots and servers
 **Authorization Needed** | None
 
 
+## Ping
+### GET `https://fates-api.select-list.xyz`/ping
+Returns nothing
+
+
+
+
+**Authorization Needed** | None
+
+
+## Set Server Listing By Web
+### POST `https://fates-api.select-list.xyz`/slwebset
+Sets the server listing on the web (after ``/webset`` command). Set ``Authorization`` to the token given by webset
+
+
+**Request Body**
+
+- **value** => string [""]
+
+
+
+**Request Body Example**
+
+```json
+{
+    "value": ""
+}
+```
+
+
+**Response Body**
+
+- **done** => bool [true]
+- **reason** => None (unknown value type)
+- **context** => (Optional) string ["https://discord.com/........."]
+
+
+
+**Response Body Example**
+
+```json
+{
+    "done": true,
+    "reason": null,
+    "context": "https://discord.com/........."
+}
+```
+
+
+**Authorization Needed** | [Special](#authorization)
+
+
 ## Get Experiment List
-### GET `https://api.fateslist.xyz`/experiments
+### GET `https://fates-api.select-list.xyz`/experiments
 Returns all currently available experiments
 
 
@@ -232,8 +324,8 @@ Returns all currently available experiments
 **Response Body**
 
 - **user_experiments** => (Array) Struct UserExperimentListItem 
-	- **name** => string [ex "Unknown"]
-	- **value** => i32 [ex 0]
+	- **name** => string ["Unknown"]
+	- **value** => i32 [0]
 
 
 
@@ -258,12 +350,12 @@ Returns all currently available experiments
 
 
 ## Resolve Vanity
-### GET `https://api.fateslist.xyz`/code/{code}
+### GET `https://fates-api.select-list.xyz`/code/{code}
 Resolves the vanity for a bot/server in the list
 
 **Path Parameters**
 
-- **code** => string [ex "my-vanity"]
+- **code** => string ["my-vanity"]
 
 
 
@@ -271,8 +363,8 @@ Resolves the vanity for a bot/server in the list
 
 **Response Body**
 
-- **target_type** => string [ex "bot | server"]
-- **target_id** => string [ex "0000000000"]
+- **target_type** => string ["bot | server"]
+- **target_id** => string ["0000000000"]
 
 
 
@@ -290,7 +382,7 @@ Resolves the vanity for a bot/server in the list
 
 
 ## Get Partners
-### GET `https://api.fateslist.xyz`/partners
+### GET `https://fates-api.select-list.xyz`/partners
 Get current partnership list
 
 
@@ -298,14 +390,14 @@ Get current partnership list
 **Response Body**
 
 - **partners** => (Array) Struct Partner 
-	- **id** => string [ex "0"]
-	- **name** => string [ex "My development"]
-	- **owner** => string [ex "12345678901234567"]
-	- **image** => string [ex ""]
-	- **description** => string [ex "Some random description"]
+	- **id** => string ["0"]
+	- **name** => string ["My development"]
+	- **owner** => string ["12345678901234567"]
+	- **image** => string [""]
+	- **description** => string ["Some random description"]
 	- **links** => Struct PartnerLinks 
-		- **discord** => string [ex "https://discord.com/lmao"]
-		- **website** => string [ex "https://example.com"]
+		- **discord** => string ["https://discord.com/lmao"]
+		- **website** => string ["https://example.com"]
 
 
 
@@ -313,8 +405,8 @@ Get current partnership list
 
 
 - **icons** => Struct PartnerLinks 
-	- **discord** => string [ex ""]
-	- **website** => string [ex ""]
+	- **discord** => string [""]
+	- **website** => string [""]
 
 
 
@@ -350,16 +442,16 @@ Get current partnership list
 
 
 ## Search List
-### GET `https://api.fateslist.xyz`/search?q={query}
+### GET `https://fates-api.select-list.xyz`/search?q={query}
 
 Searches the list based on a query named ``q``. 
         
 Using -1 for ``gc_to`` will disable ``gc_to`` field
 **Query Parameters**
 
-- **q** => string [ex "mew"]
-- **gc_from** => i64 [ex 1]
-- **gc_to** => i64 [ex -1]
+- **q** => string ["mew"]
+- **gc_from** => i64 [1]
+- **gc_to** => i64 [-1]
 
 
 
@@ -369,57 +461,57 @@ Using -1 for ``gc_to`` will disable ``gc_to`` field
 **Response Body**
 
 - **bots** => (Array) Struct IndexBot 
-	- **guild_count** => i64 [ex 30]
-	- **description** => string [ex "My description"]
-	- **banner** => string [ex "My banner or default banner url"]
-	- **votes** => i64 [ex 40]
-	- **state** => i32 [ex 3]
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
 	- **flags** => (Array) 
-	- **created_at** => string [ex "2022-06-04T04:55:36.320188851Z"]
+	- **created_at** => string ["2023-08-29T15:17:52.571581301Z"]
 
 
 
 - **servers** => (Array) Struct IndexBot 
-	- **guild_count** => i64 [ex 30]
-	- **description** => string [ex "My description"]
-	- **banner** => string [ex "My banner or default banner url"]
-	- **votes** => i64 [ex 40]
-	- **state** => i32 [ex 3]
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
 	- **flags** => (Array) 
-	- **created_at** => string [ex "2022-06-04T04:55:36.320189374Z"]
+	- **created_at** => string ["2023-08-29T15:17:52.571581901Z"]
 
 
 
 - **profiles** => (Array) Struct SearchProfile 
-	- **banner** => string [ex ""]
-	- **description** => string [ex ""]
+	- **banner** => string [""]
+	- **description** => string [""]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
@@ -427,53 +519,53 @@ Using -1 for ``gc_to`` will disable ``gc_to`` field
 
 
 - **packs** => (Array) Struct BotPack 
-	- **id** => string [ex "0"]
-	- **name** => string [ex ""]
-	- **description** => string [ex ""]
-	- **icon** => string [ex ""]
-	- **banner** => string [ex ""]
+	- **id** => string ["0"]
+	- **name** => string [""]
+	- **description** => string [""]
+	- **icon** => string [""]
+	- **banner** => string [""]
 	- **resolved_bots** => (Array) Struct ResolvedPackBot 
 		- **user** => Struct User 
-			- **id** => string [ex ""]
-			- **username** => string [ex ""]
-			- **disc** => string [ex ""]
-			- **avatar** => string [ex ""]
-			- **bot** => bool [ex false]
-			- **status** => string [ex "Unknown"]
+			- **id** => string [""]
+			- **username** => string [""]
+			- **disc** => string [""]
+			- **avatar** => string [""]
+			- **bot** => bool [false]
+			- **status** => string ["Unknown"]
 
 
 
-		- **description** => string [ex ""]
+		- **description** => string [""]
 
 
 
 	- **owner** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
-	- **created_at** => string [ex "1970-01-01T00:00:00Z"]
+	- **created_at** => string ["1970-01-01T00:00:00Z"]
 
 
 
 - **tags** => Struct SearchTags 
 	- **bots** => (Array) Struct Tag 
-		- **name** => string [ex ""]
-		- **iconify_data** => string [ex ""]
-		- **id** => string [ex ""]
+		- **name** => string [""]
+		- **iconify_data** => string [""]
+		- **id** => string [""]
 		- **owner_guild** => None (unknown value type)
 
 
 
 	- **servers** => (Array) Struct Tag 
-		- **name** => string [ex ""]
-		- **iconify_data** => string [ex ""]
-		- **id** => string [ex ""]
+		- **name** => string [""]
+		- **iconify_data** => string [""]
+		- **id** => string [""]
 		- **owner_guild** => None (unknown value type)
 
 
@@ -504,7 +596,7 @@ Using -1 for ``gc_to`` will disable ``gc_to`` field
                 "status": "Unknown"
             },
             "flags": [],
-            "created_at": "2022-06-04T04:55:36.320188851Z"
+            "created_at": "2023-08-29T15:17:52.571581301Z"
         }
     ],
     "servers": [
@@ -523,7 +615,7 @@ Using -1 for ``gc_to`` will disable ``gc_to`` field
                 "status": "Unknown"
             },
             "flags": [],
-            "created_at": "2022-06-04T04:55:36.320189374Z"
+            "created_at": "2023-08-29T15:17:52.571581901Z"
         }
     ],
     "profiles": [
@@ -597,11 +689,11 @@ Using -1 for ``gc_to`` will disable ``gc_to`` field
 
 
 ## Search Tags
-### GET `https://api.fateslist.xyz`/search-tags?q={query}
+### GET `https://fates-api.select-list.xyz`/search-tags?q={query}
 Searches the list based on a tag named ``q``.
 **Query Parameters**
 
-- **q** => string [ex "mew"]
+- **q** => string ["mew"]
 
 
 
@@ -611,57 +703,57 @@ Searches the list based on a tag named ``q``.
 **Response Body**
 
 - **bots** => (Array) Struct IndexBot 
-	- **guild_count** => i64 [ex 30]
-	- **description** => string [ex "My description"]
-	- **banner** => string [ex "My banner or default banner url"]
-	- **votes** => i64 [ex 40]
-	- **state** => i32 [ex 3]
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
 	- **flags** => (Array) 
-	- **created_at** => string [ex "2022-06-04T04:55:36.320235668Z"]
+	- **created_at** => string ["2023-08-29T15:17:52.571706149Z"]
 
 
 
 - **servers** => (Array) Struct IndexBot 
-	- **guild_count** => i64 [ex 30]
-	- **description** => string [ex "My description"]
-	- **banner** => string [ex "My banner or default banner url"]
-	- **votes** => i64 [ex 40]
-	- **state** => i32 [ex 3]
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
 	- **flags** => (Array) 
-	- **created_at** => string [ex "2022-06-04T04:55:36.320235922Z"]
+	- **created_at** => string ["2023-08-29T15:17:52.571706785Z"]
 
 
 
 - **profiles** => (Array) Struct SearchProfile 
-	- **banner** => string [ex ""]
-	- **description** => string [ex ""]
+	- **banner** => string [""]
+	- **description** => string [""]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
@@ -669,53 +761,53 @@ Searches the list based on a tag named ``q``.
 
 
 - **packs** => (Array) Struct BotPack 
-	- **id** => string [ex "0"]
-	- **name** => string [ex ""]
-	- **description** => string [ex ""]
-	- **icon** => string [ex ""]
-	- **banner** => string [ex ""]
+	- **id** => string ["0"]
+	- **name** => string [""]
+	- **description** => string [""]
+	- **icon** => string [""]
+	- **banner** => string [""]
 	- **resolved_bots** => (Array) Struct ResolvedPackBot 
 		- **user** => Struct User 
-			- **id** => string [ex ""]
-			- **username** => string [ex ""]
-			- **disc** => string [ex ""]
-			- **avatar** => string [ex ""]
-			- **bot** => bool [ex false]
-			- **status** => string [ex "Unknown"]
+			- **id** => string [""]
+			- **username** => string [""]
+			- **disc** => string [""]
+			- **avatar** => string [""]
+			- **bot** => bool [false]
+			- **status** => string ["Unknown"]
 
 
 
-		- **description** => string [ex ""]
+		- **description** => string [""]
 
 
 
 	- **owner** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
-	- **created_at** => string [ex "1970-01-01T00:00:00Z"]
+	- **created_at** => string ["1970-01-01T00:00:00Z"]
 
 
 
 - **tags** => Struct SearchTags 
 	- **bots** => (Array) Struct Tag 
-		- **name** => string [ex ""]
-		- **iconify_data** => string [ex ""]
-		- **id** => string [ex ""]
+		- **name** => string [""]
+		- **iconify_data** => string [""]
+		- **id** => string [""]
 		- **owner_guild** => None (unknown value type)
 
 
 
 	- **servers** => (Array) Struct Tag 
-		- **name** => string [ex ""]
-		- **iconify_data** => string [ex ""]
-		- **id** => string [ex ""]
+		- **name** => string [""]
+		- **iconify_data** => string [""]
+		- **id** => string [""]
 		- **owner_guild** => None (unknown value type)
 
 
@@ -746,7 +838,7 @@ Searches the list based on a tag named ``q``.
                 "status": "Unknown"
             },
             "flags": [],
-            "created_at": "2022-06-04T04:55:36.320235668Z"
+            "created_at": "2023-08-29T15:17:52.571706149Z"
         }
     ],
     "servers": [
@@ -765,7 +857,7 @@ Searches the list based on a tag named ``q``.
                 "status": "Unknown"
             },
             "flags": [],
-            "created_at": "2022-06-04T04:55:36.320235922Z"
+            "created_at": "2023-08-29T15:17:52.571706785Z"
         }
     ],
     "profiles": [
@@ -839,7 +931,7 @@ Searches the list based on a tag named ``q``.
 
 
 ## Mini Index
-### GET `https://api.fateslist.xyz`/mini-index
+### GET `https://fates-api.select-list.xyz`/mini-index
 
 Returns a mini-index which is basically a Index but with only ``tags``
 and ``features`` having any data. Other fields are empty arrays/vectors.
@@ -852,22 +944,43 @@ index is too costly and making a new struct is unnecessary.
 
 **Response Body**
 
+- **random** => Struct IndexBot 
+	- **guild_count** => i64 [30]
+	- **description** => string ["My description"]
+	- **banner** => string ["My banner or default banner url"]
+	- **votes** => i64 [40]
+	- **state** => i32 [3]
+	- **user** => Struct User 
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
+
+
+
+	- **flags** => (Array) 
+	- **created_at** => string ["2023-08-29T15:17:52.571823485Z"]
+
+
+
 - **new** => (Array) 
 - **top_voted** => (Array) 
 - **certified** => (Array) 
 - **tags** => (Array) Struct Tag 
-	- **name** => string [ex ""]
-	- **iconify_data** => string [ex ""]
-	- **id** => string [ex ""]
+	- **name** => string [""]
+	- **iconify_data** => string [""]
+	- **id** => string [""]
 	- **owner_guild** => None (unknown value type)
 
 
 
 - **features** => (Array) Struct Feature 
-	- **id** => string [ex ""]
-	- **name** => string [ex ""]
-	- **viewed_as** => string [ex ""]
-	- **description** => string [ex ""]
+	- **id** => string [""]
+	- **name** => string [""]
+	- **viewed_as** => string [""]
+	- **description** => string [""]
 
 
 
@@ -878,6 +991,23 @@ index is too costly and making a new struct is unnecessary.
 
 ```json
 {
+    "random": {
+        "guild_count": 30,
+        "description": "My description",
+        "banner": "My banner or default banner url",
+        "votes": 40,
+        "state": 3,
+        "user": {
+            "id": "",
+            "username": "",
+            "disc": "",
+            "avatar": "",
+            "bot": false,
+            "status": "Unknown"
+        },
+        "flags": [],
+        "created_at": "2023-08-29T15:17:52.571823485Z"
+    },
     "new": [],
     "top_voted": [],
     "certified": [],

@@ -1,7 +1,7 @@
 
-**API URL**: ``https://api.fateslist.xyz``
+**API URL**: ``https://fates-api.select-list.xyz``
 
-**Widgets Documentation:** ``https://lynx.fateslist.xyz/widgets`` (docs for widgets available at https://lynx.fateslist.xyz/widgets)
+**Widgets Documentation:** ``https://fates-lynx.select-list.xyz/widgets`` 
 
 ## Authorization
 
@@ -31,6 +31,8 @@ you prefix the token with `User`. **A access token (for custom clients)
 can also be used on *most* endpoints as long as the token is prefixed with 
 ``Frostpaw``**
 
+- **Special:** These endpoint employ their own authentication system (such as ``slwebset``)
+
 ## Base Response
 
 A default API Response will be of the below format:
@@ -44,19 +46,19 @@ A default API Response will be of the below format:
 ```
 
 ## Create Bot Vote
-### PATCH `https://api.fateslist.xyz`/users/{user_id}/bots/{bot_id}/votes
+### PATCH `https://fates-api.select-list.xyz`/users/{user_id}/bots/{bot_id}/votes
 This endpoint creates a vote for a bot which can only be done *once* every 8 hours.
 **Query Parameters**
 
-- **test** => bool [ex true]
+- **test** => bool [true]
 
 
 
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **bot_id** => i64 [ex 0]
+- **user_id** => i64 [0]
+- **bot_id** => i64 [0]
 
 
 
@@ -64,9 +66,9 @@ This endpoint creates a vote for a bot which can only be done *once* every 8 hou
 
 **Response Body**
 
-- **done** => bool [ex false]
-- **reason** => (Optional) string [ex "Error code"]
-- **context** => (Optional) string [ex "Some context on the error"]
+- **done** => bool [false]
+- **reason** => (Optional) string ["Error code"]
+- **context** => (Optional) string ["Some context on the error"]
 
 
 
@@ -85,22 +87,22 @@ This endpoint creates a vote for a bot which can only be done *once* every 8 hou
 
 
 ## Create Server Vote
-### PATCH `https://api.fateslist.xyz`/users/{user_id}/servers/{server_id}/votes
+### PATCH `https://fates-api.select-list.xyz`/users/{user_id}/servers/{server_id}/votes
 
 This endpoint creates a vote for a server which can only be done *once* every 8 hours
 and is independent from a bot vote.
                     
 **Query Parameters**
 
-- **test** => bool [ex true]
+- **test** => bool [true]
 
 
 
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **server_id** => i64 [ex 0]
+- **user_id** => i64 [0]
+- **server_id** => i64 [0]
 
 
 
@@ -108,9 +110,9 @@ and is independent from a bot vote.
 
 **Response Body**
 
-- **done** => bool [ex false]
-- **reason** => (Optional) string [ex "Why the vote failed or any extra info to send to client if the vote succeeded"]
-- **context** => (Optional) string [ex "Some context on the vote"]
+- **done** => bool [false]
+- **reason** => (Optional) string ["Why the vote failed or any extra info to send to client if the vote succeeded"]
+- **context** => (Optional) string ["Some context on the vote"]
 
 
 
@@ -129,7 +131,7 @@ and is independent from a bot vote.
 
 
 ## Get Bot Votes
-### GET `https://api.fateslist.xyz`/users/{user_id}/bots/{bot_id}/votes
+### GET `https://fates-api.select-list.xyz`/users/{user_id}/bots/{bot_id}/votes
 
 Endpoint to check amount of votes a user has.
 
@@ -148,8 +150,8 @@ this however, it is prone to change *anytime* in the future and may return bogus
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **bot_id** => i64 [ex 0]
+- **user_id** => i64 [0]
+- **bot_id** => i64 [0]
 
 
 
@@ -157,11 +159,11 @@ this however, it is prone to change *anytime* in the future and may return bogus
 
 **Response Body**
 
-- **votes** => i64 [ex 10]
-- **voted** => bool [ex true]
-- **vote_right_now** => bool [ex false]
-- **expiry** => u64 [ex 101]
-- **timestamps** => (Array) string [ex "1970-01-01T00:00:00Z"]
+- **votes** => i64 [10]
+- **voted** => bool [true]
+- **vote_right_now** => bool [false]
+- **expiry** => u64 [101]
+- **timestamps** => (Array) string ["1970-01-01T00:00:00Z"]
 
 
 
@@ -184,7 +186,7 @@ this however, it is prone to change *anytime* in the future and may return bogus
 
 
 ## Get Server Votes
-### GET `https://api.fateslist.xyz`/users/{user_id}/servers/{server_id}/votes
+### GET `https://fates-api.select-list.xyz`/users/{user_id}/servers/{server_id}/votes
 
 Endpoint to check amount of votes a user has.
 
@@ -203,8 +205,8 @@ this however, it is prone to change *anytime* in the future and may return bogus
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **server_id** => i64 [ex 0]
+- **user_id** => i64 [0]
+- **server_id** => i64 [0]
 
 
 
@@ -212,11 +214,11 @@ this however, it is prone to change *anytime* in the future and may return bogus
 
 **Response Body**
 
-- **votes** => i64 [ex 10]
-- **voted** => bool [ex true]
-- **vote_right_now** => bool [ex false]
-- **expiry** => u64 [ex 101]
-- **timestamps** => (Array) string [ex "1970-01-01T00:00:00Z"]
+- **votes** => i64 [10]
+- **voted** => bool [true]
+- **vote_right_now** => bool [false]
+- **expiry** => u64 [101]
+- **timestamps** => (Array) string ["1970-01-01T00:00:00Z"]
 
 
 

@@ -1,7 +1,7 @@
 
-**API URL**: ``https://api.fateslist.xyz``
+**API URL**: ``https://fates-api.select-list.xyz``
 
-**Widgets Documentation:** ``https://lynx.fateslist.xyz/widgets`` (docs for widgets available at https://lynx.fateslist.xyz/widgets)
+**Widgets Documentation:** ``https://fates-lynx.select-list.xyz/widgets`` 
 
 ## Authorization
 
@@ -31,6 +31,8 @@ you prefix the token with `User`. **A access token (for custom clients)
 can also be used on *most* endpoints as long as the token is prefixed with 
 ``Frostpaw``**
 
+- **Special:** These endpoint employ their own authentication system (such as ``slwebset``)
+
 ## Base Response
 
 A default API Response will be of the below format:
@@ -44,7 +46,7 @@ A default API Response will be of the below format:
 ```
 
 ## Get Server
-### GET `https://api.fateslist.xyz`/servers/{id}
+### GET `https://fates-api.select-list.xyz`/servers/{id}
 
 Fetches server information given a server/guild ID. If not found, 404 will be returned. 
 
@@ -58,7 +60,7 @@ server privacy restrictions. **Note that when fetching invite links, requires lo
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
@@ -67,49 +69,49 @@ server privacy restrictions. **Note that when fetching invite links, requires lo
 **Response Body**
 
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
 - **owner** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
-- **description** => string [ex ""]
+- **description** => string [""]
 - **tags** => (Array) 
-- **long_description_type** => i32 [ex 1]
-- **long_description** => string [ex ""]
-- **long_description_raw** => string [ex ""]
-- **vanity** => (Optional) string [ex "server-vanity"]
-- **guild_count** => i64 [ex 0]
-- **invite_amount** => i32 [ex 0]
-- **invite_link** => (Optional) string [ex "Only present if ``Frostpaw-Invite`` header is set"]
-- **created_at** => string [ex "1970-01-01T00:00:00Z"]
-- **state** => i32 [ex 0]
+- **long_description_type** => i32 [1]
+- **long_description** => string [""]
+- **long_description_raw** => string [""]
+- **vanity** => (Optional) string ["server-vanity"]
+- **guild_count** => i64 [0]
+- **invite_amount** => i32 [0]
+- **invite_link** => (Optional) string ["Only present if ``Frostpaw-Invite`` header is set"]
+- **created_at** => string ["1970-01-01T00:00:00Z"]
+- **state** => i32 [0]
 - **flags** => (Array) 
-- **css** => string [ex ""]
-- **css_raw** => string [ex "unsanitized css"]
+- **css** => string [""]
+- **css_raw** => string ["unsanitized css"]
 - **extra_links** => Map (key/value)  
 	- **key**
- => string [ex "value"]
+ => string ["value"]
 
 
 
-- **banner_card** => (Optional) string [ex "https://frostpaw.com/assets/img/banner-card.png"]
-- **banner_page** => (Optional) string [ex "https://frostpaw.com/assets/img/banner-page.png"]
-- **votes** => i64 [ex 0]
-- **total_votes** => i64 [ex 0]
+- **banner_card** => (Optional) string ["https://frostpaw.com/assets/img/banner-card.png"]
+- **banner_page** => (Optional) string ["https://frostpaw.com/assets/img/banner-page.png"]
+- **votes** => i64 [0]
+- **total_votes** => i64 [0]
 
 
 
@@ -162,7 +164,7 @@ server privacy restrictions. **Note that when fetching invite links, requires lo
 
 
 ## Random Server
-### GET `https://api.fateslist.xyz`/random-server
+### GET `https://fates-api.select-list.xyz`/random-server
 
 Fetches a random server on the list
 
@@ -183,23 +185,23 @@ def random_server():
 
 **Response Body**
 
-- **guild_count** => i64 [ex 30]
-- **description** => string [ex "My description"]
-- **banner** => string [ex "My banner or default banner url"]
-- **votes** => i64 [ex 40]
-- **state** => i32 [ex 3]
+- **guild_count** => i64 [30]
+- **description** => string ["My description"]
+- **banner** => string ["My banner or default banner url"]
+- **votes** => i64 [40]
+- **state** => i32 [3]
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
 - **flags** => (Array) 
-- **created_at** => string [ex "2022-06-04T04:55:36.320673224Z"]
+- **created_at** => string ["2023-08-29T15:17:52.572840076Z"]
 
 
 
@@ -221,7 +223,7 @@ def random_server():
         "status": "Unknown"
     },
     "flags": [],
-    "created_at": "2022-06-04T04:55:36.320673224Z"
+    "created_at": "2023-08-29T15:17:52.572840076Z"
 }
 ```
 

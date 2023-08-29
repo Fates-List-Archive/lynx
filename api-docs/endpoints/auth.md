@@ -1,7 +1,7 @@
 
-**API URL**: ``https://api.fateslist.xyz``
+**API URL**: ``https://fates-api.select-list.xyz``
 
-**Widgets Documentation:** ``https://lynx.fateslist.xyz/widgets`` (docs for widgets available at https://lynx.fateslist.xyz/widgets)
+**Widgets Documentation:** ``https://fates-lynx.select-list.xyz/widgets`` 
 
 ## Authorization
 
@@ -31,6 +31,8 @@ you prefix the token with `User`. **A access token (for custom clients)
 can also be used on *most* endpoints as long as the token is prefixed with 
 ``Frostpaw``**
 
+- **Special:** These endpoint employ their own authentication system (such as ``slwebset``)
+
 ## Base Response
 
 A default API Response will be of the below format:
@@ -44,11 +46,11 @@ A default API Response will be of the below format:
 ```
 
 ## Get OAuth2 Link
-### GET `https://api.fateslist.xyz`/oauth2
+### GET `https://fates-api.select-list.xyz`/oauth2
 
 Returns the oauth2 link used to login with. ``reason`` contains the state UUID
 
-- `Frostpaw-Server` header must be set to `https://fateslist.xyz` if you are a custom client
+- `Frostpaw-Server` header must be set to `https://fates.select-list.xyz` if you are a custom client
 - If you are a custom client, then ignore the state present here and instead set `state` to `Bayshine.${YOUR CLIENT ID}.${CURRENT TIME}.${HMAC PAYLOAD}` where 
 client ID is the client ID given during whitelisting, CURRENT TIME is the current time in Unix Epoch and HMAC PAYLOAD is that same current time HMAC-SHA256
 signed with your client secret given to you during whitelisting. **You must calculate state server side**
@@ -60,9 +62,9 @@ Once login succeeds and is authorized by the user, then the user will be redirec
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
-- **context** => (Optional) string [ex "https://discord.com/........."]
+- **context** => (Optional) string ["https://discord.com/........."]
 
 
 
@@ -81,14 +83,14 @@ Once login succeeds and is authorized by the user, then the user will be redirec
 
 
 ## Get Frostpaw Client
-### GET `https://api.fateslist.xyz`/frostpaw/clients/{id}
+### GET `https://fates-api.select-list.xyz`/frostpaw/clients/{id}
 
 Returns the Frostpaw client with the given ID.
                         
 
 **Path Parameters**
 
-- **id** => string [ex "client id here"]
+- **id** => string ["client id here"]
 
 
 
@@ -96,20 +98,21 @@ Returns the Frostpaw client with the given ID.
 
 **Response Body**
 
-- **id** => string [ex ""]
-- **name** => string [ex ""]
-- **domain** => string [ex ""]
-- **privacy_policy** => string [ex ""]
+- **id** => string [""]
+- **name** => string [""]
+- **domain** => string [""]
+- **privacy_policy** => string [""]
 - **owner** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
+- **verified** => bool [false]
 
 
 
@@ -128,7 +131,8 @@ Returns the Frostpaw client with the given ID.
         "avatar": "",
         "bot": false,
         "status": "Unknown"
-    }
+    },
+    "verified": false
 }
 ```
 
@@ -137,14 +141,14 @@ Returns the Frostpaw client with the given ID.
 
 
 ## Refresh Frostpaw Token
-### POST `https://api.fateslist.xyz`/frostpaw/clients/{client_id}/refresh
+### POST `https://fates-api.select-list.xyz`/frostpaw/clients/{client_id}/refresh
 
 Refreshes a token for the given client.
                         
 
 **Path Parameters**
 
-- **id** => string [ex "client id here"]
+- **id** => string ["client id here"]
 
 
 
@@ -152,9 +156,9 @@ Refreshes a token for the given client.
 
 **Response Body**
 
-- **done** => bool [ex true]
-- **reason** => (Optional) string [ex "Error code, if any"]
-- **context** => (Optional) string [ex "Refresh token, if everything went ok :)"]
+- **done** => bool [true]
+- **reason** => (Optional) string ["Error code, if any"]
+- **context** => (Optional) string ["Refresh token, if everything went ok :)"]
 
 
 
@@ -173,14 +177,14 @@ Refreshes a token for the given client.
 
 
 ## Create OAuth2 Login
-### POST `https://api.fateslist.xyz`/oauth2
+### POST `https://fates-api.select-list.xyz`/oauth2
 
 Creates a oauth2 login given a code. 
 
 **This API (as well as the below) is already done for custom clients by the actual site**
 
 - Set `frostpaw` in the JSON if you are a custom client
-- `Frostpaw-Server` header must be set to `https://fateslist.xyz`
+- `Frostpaw-Server` header must be set to `https://fates.select-list.xyz`
 - ``frostpaw_blood`` (client ID), ``frostpaw_claw`` (hmac'd time you sent) and 
 ``frostpaw_claw_unseathe_time`` (time you sent in state) are internal fields used 
 by the site to login.
@@ -189,9 +193,9 @@ by the site to login.
 
 **Request Body**
 
-- **code** => string [ex "code from discord oauth"]
-- **state** => (Optional) string [ex "Random UUID right now"]
-- **frostpaw** => bool [ex true]
+- **code** => string ["code from discord oauth"]
+- **state** => (Optional) string ["Random UUID right now"]
+- **frostpaw** => bool [true]
 - **frostpaw_blood** => None (unknown value type)
 - **frostpaw_claw** => None (unknown value type)
 - **frostpaw_claw_unseathe_time** => None (unknown value type)
@@ -214,20 +218,20 @@ by the site to login.
 
 **Response Body**
 
-- **state** => i32 [ex 0]
-- **token** => string [ex ""]
+- **state** => i32 [0]
+- **token** => string [""]
 - **refresh_token** => None (unknown value type)
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
-- **site_lang** => string [ex ""]
+- **site_lang** => string [""]
 - **css** => None (unknown value type)
 - **user_experiments** => (Array) 
 

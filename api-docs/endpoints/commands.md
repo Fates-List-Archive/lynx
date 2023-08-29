@@ -45,11 +45,119 @@ A default API Response will be of the below format:
 }
 ```
 
-## New Bot Token
-### DELETE `https://fates-api.select-list.xyz`/bots/{id}/token
+## Add Command
+### POST `https://fates-api.select-list.xyz`/bots/{id}/commands
 
-'Deletes' a bot token and reissues a new bot token. Use this if your bots
-token ever gets leaked! Also used by the official client
+Creates a command.
+
+The ``id`` here must be the bot id you wish to add the command for
+
+**This performs a *upsert* meaning it will either create or update 
+the command depending on its ``name``.**
+
+**Only post up to 10-20 commands at a time, otherwise requests may be truncated
+or otherwise fail with odd errors.  If you have more than this, then perform 
+multiple requests**
+
+``target_type`` is a [TargetType](./enums#targettype)
+**Query Parameters**
+
+- **target_type** => i32 [0]
+
+
+
+
+**Path Parameters**
+
+- **id** => i64 [0]
+
+
+
+
+**Request Body**
+
+- **commands** => (Array) Struct BotCommand 
+	- **cmd_type** => i32 [0]
+	- **groups** => (Array) 
+	- **name** => string [""]
+	- **vote_locked** => bool [false]
+	- **description** => string [""]
+	- **args** => (Array) 
+	- **examples** => (Array) 
+	- **premium_only** => bool [false]
+	- **notes** => (Array) 
+	- **doc_link** => None (unknown value type)
+	- **id** => None (unknown value type)
+	- **nsfw** => bool [false]
+
+
+
+
+
+
+**Request Body Example**
+
+```json
+{
+    "commands": [
+        {
+            "cmd_type": 0,
+            "groups": [],
+            "name": "",
+            "vote_locked": false,
+            "description": "",
+            "args": [],
+            "examples": [],
+            "premium_only": false,
+            "notes": [],
+            "doc_link": null,
+            "id": null,
+            "nsfw": false
+        }
+    ]
+}
+```
+
+
+**Response Body**
+
+- **done** => bool [true]
+- **reason** => None (unknown value type)
+- **context** => None (unknown value type)
+
+
+
+**Response Body Example**
+
+```json
+{
+    "done": true,
+    "reason": null,
+    "context": null
+}
+```
+
+
+**Authorization Needed** | [Bot](#authorization)
+
+
+## Delete Commands
+### DELETE `https://fates-api.select-list.xyz`/bots/{id}/commands
+
+DELETE a command.
+
+The ``id`` here must be the bot id you wish to add the command for
+
+``names`` and ``ids`` must be a ``|`` seperated list of ``names`` or valid
+UUIDs in the case of ids. Bad names/ids will be ignored
+**Query Parameters**
+
+- **nuke** => (Optional) bool [false]
+- **names** => (Optional) string ["command name|command name 2"]
+- **ids** => (Optional) string ["id 1|id 2"]
+
+
+
 
 **Path Parameters**
 
@@ -79,115 +187,5 @@ token ever gets leaked! Also used by the official client
 
 
 **Authorization Needed** | [Bot](#authorization)
-
-
-## New User Token
-### DELETE `https://fates-api.select-list.xyz`/users/{id}/token
-
-'Deletes' a user token and reissues a new user token. Use this if your bots
-token ever gets leaked! Also used by the official client
-
-**Path Parameters**
-
-- **id** => i64 [0]
-
-
-
-
-
-**Response Body**
-
-- **done** => bool [true]
-- **reason** => None (unknown value type)
-- **context** => None (unknown value type)
-
-
-
-**Response Body Example**
-
-```json
-{
-    "done": true,
-    "reason": null,
-    "context": null
-}
-```
-
-
-**Authorization Needed** | [User](#authorization)
-
-
-## New Server Token
-### DELETE `https://fates-api.select-list.xyz`/servers/{id}/token
-
-'Deletes' a server token and reissues a new server token. Use this if your server
-token ever gets leaked.
-
-**Path Parameters**
-
-- **id** => i64 [0]
-
-
-
-
-
-**Response Body**
-
-- **done** => bool [true]
-- **reason** => None (unknown value type)
-- **context** => None (unknown value type)
-
-
-
-**Response Body Example**
-
-```json
-{
-    "done": true,
-    "reason": null,
-    "context": null
-}
-```
-
-
-**Authorization Needed** | [Server](#authorization)
-
-
-## Revoke Frostpaw Client Auth
-### DELETE `https://fates-api.select-list.xyz`/users/{id}/frostpaw/clients/{client_id}
-
-'Deletes' a user token and reissues a new user token. Use this if your user
-token ever gets leaked.
-                
-
-**Path Parameters**
-
-- **id** => i64 [0]
-- **client_id** => string ["client_id"]
-
-
-
-
-
-**Response Body**
-
-- **done** => bool [true]
-- **reason** => None (unknown value type)
-- **context** => None (unknown value type)
-
-
-
-**Response Body Example**
-
-```json
-{
-    "done": true,
-    "reason": null,
-    "context": null
-}
-```
-
-
-**Authorization Needed** | [User](#authorization)
 
 

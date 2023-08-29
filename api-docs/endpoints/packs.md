@@ -1,7 +1,7 @@
 
-**API URL**: ``https://api.fateslist.xyz``
+**API URL**: ``https://fates-api.select-list.xyz``
 
-**Widgets Documentation:** ``https://lynx.fateslist.xyz/widgets`` (docs for widgets available at https://lynx.fateslist.xyz/widgets)
+**Widgets Documentation:** ``https://fates-lynx.select-list.xyz/widgets`` 
 
 ## Authorization
 
@@ -31,6 +31,8 @@ you prefix the token with `User`. **A access token (for custom clients)
 can also be used on *most* endpoints as long as the token is prefixed with 
 ``Frostpaw``**
 
+- **Special:** These endpoint employ their own authentication system (such as ``slwebset``)
+
 ## Base Response
 
 A default API Response will be of the below format:
@@ -44,7 +46,7 @@ A default API Response will be of the below format:
 ```
 
 ## Add Pack
-### POST `https://api.fateslist.xyz`/users/{id}/packs
+### POST `https://fates-api.select-list.xyz`/users/{id}/packs
 
 Creates a bot pack. 
 
@@ -55,44 +57,44 @@ but must exist in the object
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
 
 **Request Body**
 
-- **id** => string [ex "0"]
-- **name** => string [ex ""]
-- **description** => string [ex ""]
-- **icon** => string [ex ""]
-- **banner** => string [ex ""]
+- **id** => string ["0"]
+- **name** => string [""]
+- **description** => string [""]
+- **icon** => string [""]
+- **banner** => string [""]
 - **resolved_bots** => (Array) Struct ResolvedPackBot 
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
-	- **description** => string [ex ""]
+	- **description** => string [""]
 
 
 
 - **owner** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
-- **created_at** => string [ex "1970-01-01T00:00:00Z"]
+- **created_at** => string ["1970-01-01T00:00:00Z"]
 
 
 
@@ -133,7 +135,7 @@ but must exist in the object
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -154,7 +156,7 @@ but must exist in the object
 
 
 ## Edit Pack
-### PATCH `https://api.fateslist.xyz`/users/{id}/packs
+### PATCH `https://fates-api.select-list.xyz`/users/{id}/packs
 
 Edits a bot pack. 
 
@@ -165,44 +167,44 @@ but must exist in the object
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
 
 **Request Body**
 
-- **id** => string [ex "81c693a5-34d2-48e5-a767-ba7b853807dd"]
-- **name** => string [ex ""]
-- **description** => string [ex ""]
-- **icon** => string [ex ""]
-- **banner** => string [ex ""]
+- **id** => string ["f6660072-3722-4efa-b9f1-4e0b655e0c84"]
+- **name** => string [""]
+- **description** => string [""]
+- **icon** => string [""]
+- **banner** => string [""]
 - **resolved_bots** => (Array) Struct ResolvedPackBot 
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
-	- **description** => string [ex ""]
+	- **description** => string [""]
 
 
 
 - **owner** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
-- **created_at** => string [ex "1970-01-01T00:00:00Z"]
+- **created_at** => string ["1970-01-01T00:00:00Z"]
 
 
 
@@ -210,7 +212,7 @@ but must exist in the object
 
 ```json
 {
-    "id": "81c693a5-34d2-48e5-a767-ba7b853807dd",
+    "id": "f6660072-3722-4efa-b9f1-4e0b655e0c84",
     "name": "",
     "description": "",
     "icon": "",
@@ -243,7 +245,7 @@ but must exist in the object
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -264,7 +266,7 @@ but must exist in the object
 
 
 ## Delete Pack
-### DELETE `https://api.fateslist.xyz`/users/{user_id}/packs/{pack_id}
+### DELETE `https://fates-api.select-list.xyz`/users/{user_id}/packs/{pack_id}
 
 Deletes a bot pack. 
 
@@ -273,8 +275,8 @@ Deletes a bot pack.
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **pack_id** => string [ex "d409352a-79e2-4549-a58f-5bbb5c4e3cf0"]
+- **user_id** => i64 [0]
+- **pack_id** => string ["e3f94e1b-435d-447c-99f5-73ed0bca30ec"]
 
 
 
@@ -282,7 +284,7 @@ Deletes a bot pack.
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 

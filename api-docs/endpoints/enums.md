@@ -12,6 +12,7 @@ The type of long description that the bot/server has opted for
 - ``long_description_type``
 
 
+
 **Values**
 
 | Name | Value |
@@ -28,6 +29,7 @@ The state of the bot or server (approved, denied etc.)
 **Common JSON keys**
 
 - ``state``
+
 
 
 **Values**
@@ -56,6 +58,7 @@ The state of the user (normal, banned etc.)
 - ``state``
 
 
+
 **Values**
 
 | Name | Value |
@@ -73,6 +76,7 @@ The flags of the bot or server (system bot etc)
 **Common JSON keys**
 
 - ``flags``
+
 
 
 **Values**
@@ -101,6 +105,7 @@ The flags of the user (such as vote privacy)
 - ``flags``
 
 
+
 **Values**
 
 | Name | Value |
@@ -119,6 +124,7 @@ All available user experiments
 **Common JSON keys**
 
 - ``user_experiments``
+
 
 
 **Values**
@@ -144,6 +150,7 @@ The status of the user. **Due to bugs, this currently shows Unknown only but thi
 - ``flags``
 
 
+
 **Values**
 
 | Name | Value |
@@ -165,6 +172,7 @@ The type of the command being posted (prefix, guild-only etc)
 - ``cmd_type``
 
 
+
 **Values**
 
 | Name | Value |
@@ -184,14 +192,13 @@ The source to import bots from
 - ``src (query parameter)``
 
 
+
 **Values**
 
 | Name | Value |
 | :--- | :--- |
 | **Rdl** | "Rdl" |
-| **Ibl** | "Ibl" |
 | **Custom** | "Custom" |
-| **Other** | "Other" |
 
 
     
@@ -202,6 +209,7 @@ The style/theme of the bot page. Servers always use single-page view
 **Common JSON keys**
 
 - ``page_style``
+
 
 
 **Values**
@@ -222,6 +230,7 @@ The type of webhook being used
 - ``webhook_type``
 
 
+
 **Values**
 
 | Name | Value |
@@ -239,7 +248,9 @@ The name of the event being sent and its corresponding number
 **Common JSON keys**
 
 - ``e``
+
 - ``...(non-exhaustive list, use context and it should be self-explanatory)``
+
 
 
 **Values**
@@ -288,6 +299,7 @@ The name of the event being sent and its corresponding number
 - ``action``
 
 
+
 **Values**
 
 | Name | Value |
@@ -317,6 +329,7 @@ The type of appeal being sent
 - ``request_type``
 
 
+
 **Values**
 
 | Name | Value |
@@ -334,6 +347,7 @@ The type of the entity (bot/server)
 **Common JSON keys**
 
 - ``target_type``
+
 
 
 **Values**

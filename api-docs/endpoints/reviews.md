@@ -1,7 +1,7 @@
 
-**API URL**: ``https://api.fateslist.xyz``
+**API URL**: ``https://fates-api.select-list.xyz``
 
-**Widgets Documentation:** ``https://lynx.fateslist.xyz/widgets`` (docs for widgets available at https://lynx.fateslist.xyz/widgets)
+**Widgets Documentation:** ``https://fates-lynx.select-list.xyz/widgets`` 
 
 ## Authorization
 
@@ -31,6 +31,8 @@ you prefix the token with `User`. **A access token (for custom clients)
 can also be used on *most* endpoints as long as the token is prefixed with 
 ``Frostpaw``**
 
+- **Special:** These endpoint employ their own authentication system (such as ``slwebset``)
+
 ## Base Response
 
 A default API Response will be of the below format:
@@ -44,14 +46,14 @@ A default API Response will be of the below format:
 ```
 
 ## Get Reviews
-### GET `https://api.fateslist.xyz`/reviews/{id}
+### GET `https://fates-api.select-list.xyz`/reviews/{id}
 
 Gets reviews for a reviewable entity.
 
 A reviewable entity is currently only a bot or a server. Profile reviews are a possibility
 in the future.
 
-``target_type`` is a [TargetType](https://lynx.fateslist.xyz/docs/endpoints/enums#targettype)
+``target_type`` is a [TargetType](https://fates-lynx.select-list.xyz/docs/endpoints/enums#targettype)
 
 This reviewable entities id which is a ``i64`` is the id that is specifed in the
 path.
@@ -67,16 +69,16 @@ This may change in the future and is given by ``per_page`` key.
 ``from`` contains the index/count of the first review of the page.
 **Query Parameters**
 
-- **target_type** => i32 [ex 0]
-- **page** => (Optional) i64 [ex 1]
-- **user_id** => (Optional) i64 [ex 0]
+- **target_type** => i32 [0]
+- **page** => (Optional) i64 [1]
+- **user_id** => (Optional) i64 [0]
 
 
 
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
@@ -86,22 +88,22 @@ This may change in the future and is given by ``per_page`` key.
 
 - **reviews** => (Array) Struct Review 
 	- **id** => None (unknown value type)
-	- **star_rating** => string [ex "0"]
-	- **review_text** => string [ex ""]
+	- **star_rating** => string ["0"]
+	- **review_text** => string [""]
 	- **votes** => Struct ParsedReviewVotes 
 		- **upvotes** => (Array) 
 		- **downvotes** => (Array) 
 
 
 
-	- **flagged** => bool [ex false]
+	- **flagged** => bool [false]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
@@ -111,32 +113,32 @@ This may change in the future and is given by ``per_page`` key.
 
 
 
-- **per_page** => i64 [ex 9]
-- **from** => i64 [ex 0]
+- **per_page** => i64 [9]
+- **from** => i64 [0]
 - **stats** => Struct ReviewStats 
-	- **average_stars** => string [ex "8.800000"]
-	- **total** => i64 [ex 78]
+	- **average_stars** => string ["8.800000"]
+	- **total** => i64 [78]
 
 
 
 - **user_review** => (Optional) Struct Review 
 	- **id** => None (unknown value type)
-	- **star_rating** => string [ex "0"]
-	- **review_text** => string [ex ""]
+	- **star_rating** => string ["0"]
+	- **review_text** => string [""]
 	- **votes** => Struct ParsedReviewVotes 
 		- **upvotes** => (Array) 
 		- **downvotes** => (Array) 
 
 
 
-	- **flagged** => bool [ex false]
+	- **flagged** => bool [false]
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
@@ -211,7 +213,7 @@ This may change in the future and is given by ``per_page`` key.
 
 
 ## Add Review
-### POST `https://api.fateslist.xyz`/reviews/{id}
+### POST `https://fates-api.select-list.xyz`/reviews/{id}
 
 Creates a review.
 
@@ -223,24 +225,24 @@ in the future.
 
 The ``parent_id`` is optional and is used to create a reply to a review.
 
-``target_type`` is a [TargetType](https://lynx.fateslist.xyz/docs/endpoints/enums#targettype)
+``target_type`` is a [TargetType](https://fates-lynx.select-list.xyz/docs/endpoints/enums#targettype)
 
-``review`` is a [Review](https://lynx.fateslist.xyz/docs/endpoints/enums#review)
+``review`` is a [Review](https://fates-lynx.select-list.xyz/docs/endpoints/enums#review)
 
 ``user_id`` is *required* for this endpoint and must be the user making the review. It must
 also match the user token sent in the ``Authorization`` header
 **Query Parameters**
 
-- **target_type** => i32 [ex 0]
+- **target_type** => i32 [0]
 - **page** => None (unknown value type)
-- **user_id** => (Optional) i64 [ex 0]
+- **user_id** => (Optional) i64 [0]
 
 
 
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
@@ -248,28 +250,28 @@ also match the user token sent in the ``Authorization`` header
 **Request Body**
 
 - **id** => None (unknown value type)
-- **star_rating** => string [ex "0"]
-- **review_text** => string [ex ""]
+- **star_rating** => string ["0"]
+- **review_text** => string [""]
 - **votes** => Struct ParsedReviewVotes 
 	- **upvotes** => (Array) 
 	- **downvotes** => (Array) 
 
 
 
-- **flagged** => bool [ex false]
+- **flagged** => bool [false]
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
 - **epoch** => (Array) 
 - **replies** => (Array) 
-- **parent_id** => (Optional) string [ex "d6a34263-ea67-4018-87ef-12c70aa3a366"]
+- **parent_id** => (Optional) string ["1e40a4db-0aa9-48e1-9c83-b6cf9220ec06"]
 
 
 
@@ -295,14 +297,14 @@ also match the user token sent in the ``Authorization`` header
     },
     "epoch": [],
     "replies": [],
-    "parent_id": "d6a34263-ea67-4018-87ef-12c70aa3a366"
+    "parent_id": "1e40a4db-0aa9-48e1-9c83-b6cf9220ec06"
 }
 ```
 
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -323,7 +325,7 @@ also match the user token sent in the ``Authorization`` header
 
 
 ## Edit Review
-### PATCH `https://api.fateslist.xyz`/reviews/{id}
+### PATCH `https://fates-api.select-list.xyz`/reviews/{id}
 
 Edits a review.
 
@@ -333,7 +335,7 @@ so there should not be an error even if provided.
 A reviewable entity is currently only a bot or a server. Profile reviews are a possibility
 in the future.
 
-``target_type`` is a [TargetType](https://lynx.fateslist.xyz/docs/endpoints/enums#targettype)
+``target_type`` is a [TargetType](https://fates-lynx.select-list.xyz/docs/endpoints/enums#targettype)
 
 This reviewable entities id which is a ``i64`` is the id that is specifed in the
 path.
@@ -346,39 +348,39 @@ edit reviews using Lynx when required.
 also match the user token sent in the ``Authorization`` header
 **Query Parameters**
 
-- **target_type** => i32 [ex 0]
+- **target_type** => i32 [0]
 - **page** => None (unknown value type)
-- **user_id** => (Optional) i64 [ex 0]
+- **user_id** => (Optional) i64 [0]
 
 
 
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
 
 **Request Body**
 
-- **id** => (Optional) string [ex "9771fee6-d2ef-440b-b461-468e65aa752f"]
-- **star_rating** => string [ex "0"]
-- **review_text** => string [ex ""]
+- **id** => (Optional) string ["c3536d1f-855d-4cb1-9d95-e32347e50d12"]
+- **star_rating** => string ["0"]
+- **review_text** => string [""]
 - **votes** => Struct ParsedReviewVotes 
 	- **upvotes** => (Array) 
 	- **downvotes** => (Array) 
 
 
 
-- **flagged** => bool [ex false]
+- **flagged** => bool [false]
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
@@ -392,7 +394,7 @@ also match the user token sent in the ``Authorization`` header
 
 ```json
 {
-    "id": "9771fee6-d2ef-440b-b461-468e65aa752f",
+    "id": "c3536d1f-855d-4cb1-9d95-e32347e50d12",
     "star_rating": "0",
     "review_text": "",
     "votes": {
@@ -417,7 +419,7 @@ also match the user token sent in the ``Authorization`` header
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -438,7 +440,7 @@ also match the user token sent in the ``Authorization`` header
 
 
 ## Delete Review
-### DELETE `https://api.fateslist.xyz`/reviews/{rid}
+### DELETE `https://fates-api.select-list.xyz`/reviews/{rid}
 
 Deletes a review
 
@@ -450,22 +452,22 @@ also match the user token sent in the ``Authorization`` header. ``page`` is curr
 A reviewable entity is currently only a bot or a server. Profile reviews are a possibility
 in the future.
 
-``target_type`` is a [TargetType](https://lynx.fateslist.xyz/docs/endpoints/enums#targettype)
+``target_type`` is a [TargetType](https://fates-lynx.select-list.xyz/docs/endpoints/enums#targettype)
 
 ``target_type`` is not currently checked but it is a good idea to set it anyways. You must
 set this anyways so you might as well set it correctly.
 **Query Parameters**
 
-- **target_type** => i32 [ex 0]
+- **target_type** => i32 [0]
 - **page** => None (unknown value type)
-- **user_id** => (Optional) i64 [ex 0]
+- **user_id** => (Optional) i64 [0]
 
 
 
 
 **Path Parameters**
 
-- **rid** => string [ex "b0f55fcf-6fbc-43c4-90e0-96e177f8cb0a"]
+- **rid** => string ["026a1ffb-e42e-4ed4-be77-d6f7a71a295a"]
 
 
 
@@ -473,7 +475,7 @@ set this anyways so you might as well set it correctly.
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -494,7 +496,7 @@ set this anyways so you might as well set it correctly.
 
 
 ## Vote Review
-### PATCH `https://api.fateslist.xyz`/reviews/{rid}/votes
+### PATCH `https://fates-api.select-list.xyz`/reviews/{rid}/votes
 
 Creates a vote for a review
 
@@ -508,22 +510,22 @@ also match the user token sent in the ``Authorization`` header.
 A reviewable entity is currently only a bot or a server. Profile reviews are a possibility
 in the future.
 
-``target_type`` is a [TargetType](https://lynx.fateslist.xyz/docs/endpoints/enums#targettype)
+``target_type`` is a [TargetType](https://fates-lynx.select-list.xyz/docs/endpoints/enums#targettype)
 
 **This endpoint does not require ``target_type`` at all. You can safely omit it**
                 
 
 **Path Parameters**
 
-- **rid** => string [ex "7a93c3cf-9c87-46fb-9da8-2d8453d76e8b"]
+- **rid** => string ["f543e160-26e9-4203-9fd7-6d4c85804a25"]
 
 
 
 
 **Request Body**
 
-- **user_id** => string [ex "user id here"]
-- **upvote** => bool [ex true]
+- **user_id** => string ["user id here"]
+- **upvote** => bool [true]
 
 
 
@@ -539,7 +541,7 @@ in the future.
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 

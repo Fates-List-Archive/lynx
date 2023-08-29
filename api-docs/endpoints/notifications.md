@@ -45,11 +45,17 @@ A default API Response will be of the below format:
 }
 ```
 
-## New Bot Token
-### DELETE `https://fates-api.select-list.xyz`/bots/{id}/token
+## Get Notification Public Info
+### GET `https://fates-api.select-list.xyz`/notifications/info
+Get the public information required for creating a push notification
+**Query Parameters**
 
-'Deletes' a bot token and reissues a new bot token. Use this if your bots
-token ever gets leaked! Also used by the official client
+- **endpoint** => string [""]
+- **p256dh** => string [""]
+- **auth** => string [""]
+
+
+
 
 **Path Parameters**
 
@@ -61,9 +67,7 @@ token ever gets leaked! Also used by the official client
 
 **Response Body**
 
-- **done** => bool [true]
-- **reason** => None (unknown value type)
-- **context** => None (unknown value type)
+- **public_key** => string [""]
 
 
 
@@ -71,27 +75,17 @@ token ever gets leaked! Also used by the official client
 
 ```json
 {
-    "done": true,
-    "reason": null,
-    "context": null
+    "public_key": ""
 }
 ```
 
 
-**Authorization Needed** | [Bot](#authorization)
+**Authorization Needed** | None
 
 
-## New User Token
-### DELETE `https://fates-api.select-list.xyz`/users/{id}/token
-
-'Deletes' a user token and reissues a new user token. Use this if your bots
-token ever gets leaked! Also used by the official client
-
-**Path Parameters**
-
-- **id** => i64 [0]
-
-
+## Create Push Notification Subscription
+### POST `https://fates-api.select-list.xyz`/notifications/{id}/sub
+Subscribes a user to a push notification.
 
 
 
@@ -117,55 +111,9 @@ token ever gets leaked! Also used by the official client
 **Authorization Needed** | [User](#authorization)
 
 
-## New Server Token
-### DELETE `https://fates-api.select-list.xyz`/servers/{id}/token
-
-'Deletes' a server token and reissues a new server token. Use this if your server
-token ever gets leaked.
-
-**Path Parameters**
-
-- **id** => i64 [0]
-
-
-
-
-
-**Response Body**
-
-- **done** => bool [true]
-- **reason** => None (unknown value type)
-- **context** => None (unknown value type)
-
-
-
-**Response Body Example**
-
-```json
-{
-    "done": true,
-    "reason": null,
-    "context": null
-}
-```
-
-
-**Authorization Needed** | [Server](#authorization)
-
-
-## Revoke Frostpaw Client Auth
-### DELETE `https://fates-api.select-list.xyz`/users/{id}/frostpaw/clients/{client_id}
-
-'Deletes' a user token and reissues a new user token. Use this if your user
-token ever gets leaked.
-                
-
-**Path Parameters**
-
-- **id** => i64 [0]
-- **client_id** => string ["client_id"]
-
-
+## Create Test Push Notification
+### GET `https://fates-api.select-list.xyz`/notifications/{id}/test
+Creates a test push notification
 
 
 

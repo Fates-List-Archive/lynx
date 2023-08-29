@@ -1,7 +1,7 @@
 
-**API URL**: ``https://api.fateslist.xyz``
+**API URL**: ``https://fates-api.select-list.xyz``
 
-**Widgets Documentation:** ``https://lynx.fateslist.xyz/widgets`` (docs for widgets available at https://lynx.fateslist.xyz/widgets)
+**Widgets Documentation:** ``https://fates-lynx.select-list.xyz/widgets`` 
 
 ## Authorization
 
@@ -31,6 +31,8 @@ you prefix the token with `User`. **A access token (for custom clients)
 can also be used on *most* endpoints as long as the token is prefixed with 
 ``Frostpaw``**
 
+- **Special:** These endpoint employ their own authentication system (such as ``slwebset``)
+
 ## Base Response
 
 A default API Response will be of the below format:
@@ -44,7 +46,7 @@ A default API Response will be of the below format:
 ```
 
 ## Post Stats
-### POST `https://api.fateslist.xyz`/bots/{id}/stats
+### POST `https://fates-api.select-list.xyz`/bots/{id}/stats
 
 Post stats to the list
 
@@ -73,17 +75,17 @@ def post_stats(bot_id: int, guild_count: int):
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
 
 **Request Body**
 
-- **guild_count** => i64 [ex 3939]
-- **shard_count** => (Optional) i64 [ex 48484]
-- **shards** => (Optional) (Array) i32 [ex 149], i32 [ex 22020]
-- **user_count** => (Optional) i64 [ex 39393]
+- **guild_count** => i64 [3939]
+- **shard_count** => (Optional) i64 [48484]
+- **shards** => (Optional) (Array) i32 [149], i32 [22020]
+- **user_count** => (Optional) i64 [39393]
 
 
 
@@ -104,7 +106,7 @@ def post_stats(bot_id: int, guild_count: int):
 
 **Response Body**
 
-- **done** => bool [ex false]
+- **done** => bool [false]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -125,7 +127,7 @@ def post_stats(bot_id: int, guild_count: int):
 
 
 ## Get Bot
-### GET `https://api.fateslist.xyz`/bots/{id}
+### GET `https://fates-api.select-list.xyz`/bots/{id}
 
 Fetches bot information given a bot ID. If not found, 404 will be returned. 
 
@@ -139,11 +141,10 @@ This API returns some empty fields such as ``webhook``, ``webhook_secret``, ``ap
 This is to allow reuse of the Bot struct in Get Bot Settings which *does* contain this sensitive data. 
 
 **Set the Frostpaw header if you are a custom client. Send Frostpaw-Invite header on invites**
-                
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
@@ -152,119 +153,119 @@ This is to allow reuse of the Bot struct in Get Bot Settings which *does* contai
 **Response Body**
 
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
-- **description** => string [ex ""]
+- **description** => string [""]
 - **tags** => (Array) 
-- **created_at** => string [ex "1970-01-01T00:00:00Z"]
-- **last_updated_at** => string [ex "1970-01-01T00:00:00Z"]
-- **last_stats_post** => string [ex "1970-01-01T00:00:00Z"]
-- **long_description** => string [ex "blah blah blah"]
-- **long_description_raw** => string [ex "blah blah blah unsanitized"]
-- **long_description_type** => i32 [ex 1]
-- **guild_count** => i64 [ex 0]
-- **shard_count** => i64 [ex 493]
-- **user_count** => i64 [ex 0]
+- **created_at** => string ["1970-01-01T00:00:00Z"]
+- **last_updated_at** => string ["1970-01-01T00:00:00Z"]
+- **last_stats_post** => string ["1970-01-01T00:00:00Z"]
+- **long_description** => string ["blah blah blah"]
+- **long_description_raw** => string ["blah blah blah unsanitized"]
+- **long_description_type** => i32 [1]
+- **guild_count** => i64 [0]
+- **shard_count** => i64 [493]
+- **user_count** => i64 [0]
 - **shards** => (Array) 
-- **prefix** => (Optional) string [ex "Some prefix, null = slash command"]
-- **library** => string [ex ""]
-- **invite** => (Optional) string [ex "Raw invite, null = auto-generated. Use invite_link instead"]
-- **invite_link** => string [ex "https://discord.com/api/oauth2/authorize...."]
-- **invite_amount** => i32 [ex 48]
+- **prefix** => (Optional) string ["Some prefix, null = slash command"]
+- **library** => string [""]
+- **invite** => (Optional) string ["Raw invite, null = auto-generated. Use invite_link instead"]
+- **invite_link** => string ["https://discord.com/api/oauth2/authorize...."]
+- **invite_amount** => i32 [48]
 - **owners** => (Array) Struct BotOwner 
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
-	- **main** => bool [ex false]
+	- **main** => bool [false]
 
 
 
 - **features** => (Array) Struct Feature 
-	- **id** => string [ex ""]
-	- **name** => string [ex ""]
-	- **viewed_as** => string [ex ""]
-	- **description** => string [ex ""]
+	- **id** => string [""]
+	- **name** => string [""]
+	- **viewed_as** => string [""]
+	- **description** => string [""]
 
 
 
-- **state** => i32 [ex 0]
-- **page_style** => i32 [ex 1]
+- **state** => i32 [0]
+- **page_style** => i32 [1]
 - **extra_links** => Map (key/value)  
 	- **key**
- => string [ex "value"]
+ => string ["value"]
 
 
 
-- **css** => string [ex "<style></style>"]
-- **css_raw** => string [ex "unsanitized css"]
-- **votes** => i64 [ex 0]
-- **total_votes** => i64 [ex 0]
-- **vanity** => string [ex ""]
-- **banner_card** => (Optional) string [ex "https://api.fateslist.xyz/static/botlisticon.webp"]
-- **banner_page** => (Optional) string [ex "https://api.fateslist.xyz/static/botlisticon.webp"]
-- **client_id** => string [ex ""]
+- **css** => string ["<style></style>"]
+- **css_raw** => string ["unsanitized css"]
+- **votes** => i64 [0]
+- **total_votes** => i64 [0]
+- **vanity** => string [""]
+- **banner_card** => (Optional) string ["<api url>/static/botlisticon.webp"]
+- **banner_page** => (Optional) string ["<api url>/static/botlisticon.webp"]
+- **client_id** => string [""]
 - **flags** => (Array) 
 - **action_logs** => (Array) Struct ActionLog 
-	- **user_id** => string [ex ""]
-	- **bot_id** => string [ex ""]
-	- **action** => i32 [ex 0]
-	- **action_time** => string [ex "1970-01-01T00:00:00Z"]
-	- **context** => (Optional) string [ex "Some context as to why the action happened"]
+	- **user_id** => string [""]
+	- **bot_id** => string [""]
+	- **action** => i32 [0]
+	- **action_time** => string ["1970-01-01T00:00:00Z"]
+	- **context** => (Optional) string ["Some context as to why the action happened"]
 
 
 
 - **vpm** => (Optional) (Array) Struct VotesPerMonth 
-	- **votes** => i64 [ex 0]
-	- **ts** => string [ex "1970-01-01T00:00:00Z"]
+	- **votes** => i64 [0]
+	- **ts** => string ["1970-01-01T00:00:00Z"]
 
 
 
-- **uptime_checks_total** => (Optional) i32 [ex 30]
-- **uptime_checks_failed** => (Optional) i32 [ex 19]
+- **uptime_checks_total** => (Optional) i32 [30]
+- **uptime_checks_failed** => (Optional) i32 [19]
 - **commands** => (Array) Struct BotCommand 
-	- **cmd_type** => i32 [ex 0]
+	- **cmd_type** => i32 [0]
 	- **groups** => (Array) 
-	- **name** => string [ex ""]
-	- **vote_locked** => bool [ex false]
-	- **description** => string [ex ""]
+	- **name** => string [""]
+	- **vote_locked** => bool [false]
+	- **description** => string [""]
 	- **args** => (Array) 
 	- **examples** => (Array) 
-	- **premium_only** => bool [ex false]
+	- **premium_only** => bool [false]
 	- **notes** => (Array) 
 	- **doc_link** => None (unknown value type)
 	- **id** => None (unknown value type)
-	- **nsfw** => bool [ex false]
+	- **nsfw** => bool [false]
 
 
 
 - **events** => (Array) Struct BotEvent 
-	- **id** => string [ex "Some UUID here"]
-	- **event_type** => i32 [ex 0]
-	- **ts** => string [ex "2022-06-04T04:55:36.320347985Z"]
-	- **reason** => string [ex "Some reason here"]
-	- **css** => string [ex "Some CSS here"]
+	- **id** => string ["Some UUID here"]
+	- **event_type** => i32 [0]
+	- **ts** => string ["2023-08-29T15:17:52.572007337Z"]
+	- **reason** => string ["Some reason here"]
+	- **css** => string ["Some CSS here"]
 
 
 
-- **webhook** => (Optional) string [ex "This will be redacted for Get Bot endpoint"]
-- **webhook_secret** => (Optional) string [ex "This (along with ``webhook_type``, ``api_token`` and ``webhook_hmac_only``) will be redacted for Get Bot endpoint"]
+- **webhook** => (Optional) string ["This will be redacted for Get Bot endpoint"]
+- **webhook_secret** => (Optional) string ["This (along with ``webhook_type``, ``api_token`` and ``webhook_hmac_only``) will be redacted for Get Bot endpoint"]
 - **webhook_type** => None (unknown value type)
 - **webhook_hmac_only** => None (unknown value type)
-- **api_token** => (Optional) string [ex "This will be redacted for Get Bot endpoint"]
+- **api_token** => (Optional) string ["This will be redacted for Get Bot endpoint"]
 
 
 
@@ -328,8 +329,8 @@ This is to allow reuse of the Bot struct in Get Bot Settings which *does* contai
     "votes": 0,
     "total_votes": 0,
     "vanity": "",
-    "banner_card": "https://api.fateslist.xyz/static/botlisticon.webp",
-    "banner_page": "https://api.fateslist.xyz/static/botlisticon.webp",
+    "banner_card": "<api url>/static/botlisticon.webp",
+    "banner_page": "<api url>/static/botlisticon.webp",
     "client_id": "",
     "flags": [],
     "action_logs": [
@@ -369,7 +370,7 @@ This is to allow reuse of the Bot struct in Get Bot Settings which *does* contai
         {
             "id": "Some UUID here",
             "event_type": 0,
-            "ts": "2022-06-04T04:55:36.320347985Z",
+            "ts": "2023-08-29T15:17:52.572007337Z",
             "reason": "Some reason here",
             "css": "Some CSS here"
         }
@@ -387,7 +388,7 @@ This is to allow reuse of the Bot struct in Get Bot Settings which *does* contai
 
 
 ## Get Bot Settings
-### GET `https://api.fateslist.xyz`/users/{user_id}/bots/{bot_id}/settings
+### GET `https://fates-api.select-list.xyz`/users/{user_id}/bots/{bot_id}/settings
 
 Returns the bot settings.
 
@@ -402,8 +403,8 @@ Staff members *must* instead use Lynx.
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **bot_id** => i64 [ex 0]
+- **user_id** => i64 [0]
+- **bot_id** => i64 [0]
 
 
 
@@ -413,136 +414,136 @@ Staff members *must* instead use Lynx.
 
 - **bot** => Struct Bot 
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
-	- **description** => string [ex ""]
+	- **description** => string [""]
 	- **tags** => (Array) 
-	- **created_at** => string [ex "1970-01-01T00:00:00Z"]
-	- **last_updated_at** => string [ex "1970-01-01T00:00:00Z"]
-	- **last_stats_post** => string [ex "1970-01-01T00:00:00Z"]
-	- **long_description** => string [ex "blah blah blah"]
-	- **long_description_raw** => string [ex "blah blah blah unsanitized"]
-	- **long_description_type** => i32 [ex 1]
-	- **guild_count** => i64 [ex 0]
-	- **shard_count** => i64 [ex 493]
-	- **user_count** => i64 [ex 0]
+	- **created_at** => string ["1970-01-01T00:00:00Z"]
+	- **last_updated_at** => string ["1970-01-01T00:00:00Z"]
+	- **last_stats_post** => string ["1970-01-01T00:00:00Z"]
+	- **long_description** => string ["blah blah blah"]
+	- **long_description_raw** => string ["blah blah blah unsanitized"]
+	- **long_description_type** => i32 [1]
+	- **guild_count** => i64 [0]
+	- **shard_count** => i64 [493]
+	- **user_count** => i64 [0]
 	- **shards** => (Array) 
-	- **prefix** => (Optional) string [ex "Some prefix, null = slash command"]
-	- **library** => string [ex ""]
-	- **invite** => (Optional) string [ex "Raw invite, null = auto-generated. Use invite_link instead"]
-	- **invite_link** => string [ex "https://discord.com/api/oauth2/authorize...."]
-	- **invite_amount** => i32 [ex 48]
+	- **prefix** => (Optional) string ["Some prefix, null = slash command"]
+	- **library** => string [""]
+	- **invite** => (Optional) string ["Raw invite, null = auto-generated. Use invite_link instead"]
+	- **invite_link** => string ["https://discord.com/api/oauth2/authorize...."]
+	- **invite_amount** => i32 [48]
 	- **owners** => (Array) Struct BotOwner 
 		- **user** => Struct User 
-			- **id** => string [ex ""]
-			- **username** => string [ex ""]
-			- **disc** => string [ex ""]
-			- **avatar** => string [ex ""]
-			- **bot** => bool [ex false]
-			- **status** => string [ex "Unknown"]
+			- **id** => string [""]
+			- **username** => string [""]
+			- **disc** => string [""]
+			- **avatar** => string [""]
+			- **bot** => bool [false]
+			- **status** => string ["Unknown"]
 
 
 
-		- **main** => bool [ex false]
+		- **main** => bool [false]
 
 
 
 	- **features** => (Array) Struct Feature 
-		- **id** => string [ex ""]
-		- **name** => string [ex ""]
-		- **viewed_as** => string [ex ""]
-		- **description** => string [ex ""]
+		- **id** => string [""]
+		- **name** => string [""]
+		- **viewed_as** => string [""]
+		- **description** => string [""]
 
 
 
-	- **state** => i32 [ex 0]
-	- **page_style** => i32 [ex 1]
+	- **state** => i32 [0]
+	- **page_style** => i32 [1]
 	- **extra_links** => Map (key/value)  
 		- **key**
- => string [ex "value"]
+ => string ["value"]
 
 
 
-	- **css** => string [ex "<style></style>"]
-	- **css_raw** => string [ex "unsanitized css"]
-	- **votes** => i64 [ex 0]
-	- **total_votes** => i64 [ex 0]
-	- **vanity** => string [ex ""]
-	- **banner_card** => (Optional) string [ex "https://api.fateslist.xyz/static/botlisticon.webp"]
-	- **banner_page** => (Optional) string [ex "https://api.fateslist.xyz/static/botlisticon.webp"]
-	- **client_id** => string [ex ""]
+	- **css** => string ["<style></style>"]
+	- **css_raw** => string ["unsanitized css"]
+	- **votes** => i64 [0]
+	- **total_votes** => i64 [0]
+	- **vanity** => string [""]
+	- **banner_card** => (Optional) string ["<api url>/static/botlisticon.webp"]
+	- **banner_page** => (Optional) string ["<api url>/static/botlisticon.webp"]
+	- **client_id** => string [""]
 	- **flags** => (Array) 
 	- **action_logs** => (Array) Struct ActionLog 
-		- **user_id** => string [ex ""]
-		- **bot_id** => string [ex ""]
-		- **action** => i32 [ex 0]
-		- **action_time** => string [ex "1970-01-01T00:00:00Z"]
-		- **context** => (Optional) string [ex "Some context as to why the action happened"]
+		- **user_id** => string [""]
+		- **bot_id** => string [""]
+		- **action** => i32 [0]
+		- **action_time** => string ["1970-01-01T00:00:00Z"]
+		- **context** => (Optional) string ["Some context as to why the action happened"]
 
 
 
 	- **vpm** => (Optional) (Array) Struct VotesPerMonth 
-		- **votes** => i64 [ex 0]
-		- **ts** => string [ex "1970-01-01T00:00:00Z"]
+		- **votes** => i64 [0]
+		- **ts** => string ["1970-01-01T00:00:00Z"]
 
 
 
-	- **uptime_checks_total** => (Optional) i32 [ex 30]
-	- **uptime_checks_failed** => (Optional) i32 [ex 19]
+	- **uptime_checks_total** => (Optional) i32 [30]
+	- **uptime_checks_failed** => (Optional) i32 [19]
 	- **commands** => (Array) Struct BotCommand 
-		- **cmd_type** => i32 [ex 0]
+		- **cmd_type** => i32 [0]
 		- **groups** => (Array) 
-		- **name** => string [ex ""]
-		- **vote_locked** => bool [ex false]
-		- **description** => string [ex ""]
+		- **name** => string [""]
+		- **vote_locked** => bool [false]
+		- **description** => string [""]
 		- **args** => (Array) 
 		- **examples** => (Array) 
-		- **premium_only** => bool [ex false]
+		- **premium_only** => bool [false]
 		- **notes** => (Array) 
 		- **doc_link** => None (unknown value type)
 		- **id** => None (unknown value type)
-		- **nsfw** => bool [ex false]
+		- **nsfw** => bool [false]
 
 
 
 	- **events** => (Array) Struct BotEvent 
-		- **id** => string [ex "Some UUID here"]
-		- **event_type** => i32 [ex 0]
-		- **ts** => string [ex "2022-06-04T04:55:36.320437684Z"]
-		- **reason** => string [ex "Some reason here"]
-		- **css** => string [ex "Some CSS here"]
+		- **id** => string ["Some UUID here"]
+		- **event_type** => i32 [0]
+		- **ts** => string ["2023-08-29T15:17:52.572168928Z"]
+		- **reason** => string ["Some reason here"]
+		- **css** => string ["Some CSS here"]
 
 
 
-	- **webhook** => (Optional) string [ex "This will be redacted for Get Bot endpoint"]
-	- **webhook_secret** => (Optional) string [ex "This (along with ``webhook_type``, ``api_token`` and ``webhook_hmac_only``) will be redacted for Get Bot endpoint"]
+	- **webhook** => (Optional) string ["This will be redacted for Get Bot endpoint"]
+	- **webhook_secret** => (Optional) string ["This (along with ``webhook_type``, ``api_token`` and ``webhook_hmac_only``) will be redacted for Get Bot endpoint"]
 	- **webhook_type** => None (unknown value type)
 	- **webhook_hmac_only** => None (unknown value type)
-	- **api_token** => (Optional) string [ex "This will be redacted for Get Bot endpoint"]
+	- **api_token** => (Optional) string ["This will be redacted for Get Bot endpoint"]
 
 
 
 - **context** => Struct BotSettingsContext 
 	- **tags** => (Array) Struct Tag 
-		- **name** => string [ex ""]
-		- **iconify_data** => string [ex ""]
-		- **id** => string [ex ""]
+		- **name** => string [""]
+		- **iconify_data** => string [""]
+		- **id** => string [""]
 		- **owner_guild** => None (unknown value type)
 
 
 
 	- **features** => (Array) Struct Feature 
-		- **id** => string [ex ""]
-		- **name** => string [ex ""]
-		- **viewed_as** => string [ex ""]
-		- **description** => string [ex ""]
+		- **id** => string [""]
+		- **name** => string [""]
+		- **viewed_as** => string [""]
+		- **description** => string [""]
 
 
 
@@ -613,8 +614,8 @@ Staff members *must* instead use Lynx.
         "votes": 0,
         "total_votes": 0,
         "vanity": "",
-        "banner_card": "https://api.fateslist.xyz/static/botlisticon.webp",
-        "banner_page": "https://api.fateslist.xyz/static/botlisticon.webp",
+        "banner_card": "<api url>/static/botlisticon.webp",
+        "banner_page": "<api url>/static/botlisticon.webp",
         "client_id": "",
         "flags": [],
         "action_logs": [
@@ -654,7 +655,7 @@ Staff members *must* instead use Lynx.
             {
                 "id": "Some UUID here",
                 "event_type": 0,
-                "ts": "2022-06-04T04:55:36.320437684Z",
+                "ts": "2023-08-29T15:17:52.572168928Z",
                 "reason": "Some reason here",
                 "css": "Some CSS here"
             }
@@ -691,7 +692,7 @@ Staff members *must* instead use Lynx.
 
 
 ## Random Bot
-### GET `https://api.fateslist.xyz`/random-bot
+### GET `https://fates-api.select-list.xyz`/random-bot
 
 Fetches a random bot on the list
 
@@ -712,23 +713,23 @@ def random_bot():
 
 **Response Body**
 
-- **guild_count** => i64 [ex 30]
-- **description** => string [ex "My description"]
-- **banner** => string [ex "My banner or default banner url"]
-- **votes** => i64 [ex 40]
-- **state** => i32 [ex 3]
+- **guild_count** => i64 [30]
+- **description** => string ["My description"]
+- **banner** => string ["My banner or default banner url"]
+- **votes** => i64 [40]
+- **state** => i32 [3]
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
 - **flags** => (Array) 
-- **created_at** => string [ex "2022-06-04T04:55:36.320501292Z"]
+- **created_at** => string ["2023-08-29T15:17:52.572337348Z"]
 
 
 
@@ -750,7 +751,7 @@ def random_bot():
         "status": "Unknown"
     },
     "flags": [],
-    "created_at": "2022-06-04T04:55:36.320501292Z"
+    "created_at": "2023-08-29T15:17:52.572337348Z"
 }
 ```
 
@@ -759,7 +760,7 @@ def random_bot():
 
 
 ## Add Bot
-### POST `https://api.fateslist.xyz`/users/{id}/bots
+### POST `https://fates-api.select-list.xyz`/users/{id}/bots
 
 Creates a new bot. 
 
@@ -775,7 +776,7 @@ to false.
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
@@ -783,119 +784,119 @@ to false.
 **Request Body**
 
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
-- **description** => string [ex ""]
+- **description** => string [""]
 - **tags** => (Array) 
-- **created_at** => string [ex "1970-01-01T00:00:00Z"]
-- **last_updated_at** => string [ex "1970-01-01T00:00:00Z"]
-- **last_stats_post** => string [ex "1970-01-01T00:00:00Z"]
-- **long_description** => string [ex "blah blah blah"]
-- **long_description_raw** => string [ex "blah blah blah unsanitized"]
-- **long_description_type** => i32 [ex 1]
-- **guild_count** => i64 [ex 0]
-- **shard_count** => i64 [ex 493]
-- **user_count** => i64 [ex 0]
+- **created_at** => string ["1970-01-01T00:00:00Z"]
+- **last_updated_at** => string ["1970-01-01T00:00:00Z"]
+- **last_stats_post** => string ["1970-01-01T00:00:00Z"]
+- **long_description** => string ["blah blah blah"]
+- **long_description_raw** => string ["blah blah blah unsanitized"]
+- **long_description_type** => i32 [1]
+- **guild_count** => i64 [0]
+- **shard_count** => i64 [493]
+- **user_count** => i64 [0]
 - **shards** => (Array) 
-- **prefix** => (Optional) string [ex "Some prefix, null = slash command"]
-- **library** => string [ex ""]
-- **invite** => (Optional) string [ex "Raw invite, null = auto-generated. Use invite_link instead"]
-- **invite_link** => string [ex "https://discord.com/api/oauth2/authorize...."]
-- **invite_amount** => i32 [ex 48]
+- **prefix** => (Optional) string ["Some prefix, null = slash command"]
+- **library** => string [""]
+- **invite** => (Optional) string ["Raw invite, null = auto-generated. Use invite_link instead"]
+- **invite_link** => string ["https://discord.com/api/oauth2/authorize...."]
+- **invite_amount** => i32 [48]
 - **owners** => (Array) Struct BotOwner 
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
-	- **main** => bool [ex false]
+	- **main** => bool [false]
 
 
 
 - **features** => (Array) Struct Feature 
-	- **id** => string [ex ""]
-	- **name** => string [ex ""]
-	- **viewed_as** => string [ex ""]
-	- **description** => string [ex ""]
+	- **id** => string [""]
+	- **name** => string [""]
+	- **viewed_as** => string [""]
+	- **description** => string [""]
 
 
 
-- **state** => i32 [ex 0]
-- **page_style** => i32 [ex 1]
+- **state** => i32 [0]
+- **page_style** => i32 [1]
 - **extra_links** => Map (key/value)  
 	- **key**
- => string [ex "value"]
+ => string ["value"]
 
 
 
-- **css** => string [ex "<style></style>"]
-- **css_raw** => string [ex "unsanitized css"]
-- **votes** => i64 [ex 0]
-- **total_votes** => i64 [ex 0]
-- **vanity** => string [ex ""]
-- **banner_card** => (Optional) string [ex "https://api.fateslist.xyz/static/botlisticon.webp"]
-- **banner_page** => (Optional) string [ex "https://api.fateslist.xyz/static/botlisticon.webp"]
-- **client_id** => string [ex ""]
+- **css** => string ["<style></style>"]
+- **css_raw** => string ["unsanitized css"]
+- **votes** => i64 [0]
+- **total_votes** => i64 [0]
+- **vanity** => string [""]
+- **banner_card** => (Optional) string ["<api url>/static/botlisticon.webp"]
+- **banner_page** => (Optional) string ["<api url>/static/botlisticon.webp"]
+- **client_id** => string [""]
 - **flags** => (Array) 
 - **action_logs** => (Array) Struct ActionLog 
-	- **user_id** => string [ex ""]
-	- **bot_id** => string [ex ""]
-	- **action** => i32 [ex 0]
-	- **action_time** => string [ex "1970-01-01T00:00:00Z"]
-	- **context** => (Optional) string [ex "Some context as to why the action happened"]
+	- **user_id** => string [""]
+	- **bot_id** => string [""]
+	- **action** => i32 [0]
+	- **action_time** => string ["1970-01-01T00:00:00Z"]
+	- **context** => (Optional) string ["Some context as to why the action happened"]
 
 
 
 - **vpm** => (Optional) (Array) Struct VotesPerMonth 
-	- **votes** => i64 [ex 0]
-	- **ts** => string [ex "1970-01-01T00:00:00Z"]
+	- **votes** => i64 [0]
+	- **ts** => string ["1970-01-01T00:00:00Z"]
 
 
 
-- **uptime_checks_total** => (Optional) i32 [ex 30]
-- **uptime_checks_failed** => (Optional) i32 [ex 19]
+- **uptime_checks_total** => (Optional) i32 [30]
+- **uptime_checks_failed** => (Optional) i32 [19]
 - **commands** => (Array) Struct BotCommand 
-	- **cmd_type** => i32 [ex 0]
+	- **cmd_type** => i32 [0]
 	- **groups** => (Array) 
-	- **name** => string [ex ""]
-	- **vote_locked** => bool [ex false]
-	- **description** => string [ex ""]
+	- **name** => string [""]
+	- **vote_locked** => bool [false]
+	- **description** => string [""]
 	- **args** => (Array) 
 	- **examples** => (Array) 
-	- **premium_only** => bool [ex false]
+	- **premium_only** => bool [false]
 	- **notes** => (Array) 
 	- **doc_link** => None (unknown value type)
 	- **id** => None (unknown value type)
-	- **nsfw** => bool [ex false]
+	- **nsfw** => bool [false]
 
 
 
 - **events** => (Array) Struct BotEvent 
-	- **id** => string [ex "Some UUID here"]
-	- **event_type** => i32 [ex 0]
-	- **ts** => string [ex "2022-06-04T04:55:36.320514577Z"]
-	- **reason** => string [ex "Some reason here"]
-	- **css** => string [ex "Some CSS here"]
+	- **id** => string ["Some UUID here"]
+	- **event_type** => i32 [0]
+	- **ts** => string ["2023-08-29T15:17:52.572370432Z"]
+	- **reason** => string ["Some reason here"]
+	- **css** => string ["Some CSS here"]
 
 
 
-- **webhook** => (Optional) string [ex "This will be redacted for Get Bot endpoint"]
-- **webhook_secret** => (Optional) string [ex "This (along with ``webhook_type``, ``api_token`` and ``webhook_hmac_only``) will be redacted for Get Bot endpoint"]
+- **webhook** => (Optional) string ["This will be redacted for Get Bot endpoint"]
+- **webhook_secret** => (Optional) string ["This (along with ``webhook_type``, ``api_token`` and ``webhook_hmac_only``) will be redacted for Get Bot endpoint"]
 - **webhook_type** => None (unknown value type)
 - **webhook_hmac_only** => None (unknown value type)
-- **api_token** => (Optional) string [ex "This will be redacted for Get Bot endpoint"]
+- **api_token** => (Optional) string ["This will be redacted for Get Bot endpoint"]
 
 
 
@@ -959,8 +960,8 @@ to false.
     "votes": 0,
     "total_votes": 0,
     "vanity": "",
-    "banner_card": "https://api.fateslist.xyz/static/botlisticon.webp",
-    "banner_page": "https://api.fateslist.xyz/static/botlisticon.webp",
+    "banner_card": "<api url>/static/botlisticon.webp",
+    "banner_page": "<api url>/static/botlisticon.webp",
     "client_id": "",
     "flags": [],
     "action_logs": [
@@ -1000,7 +1001,7 @@ to false.
         {
             "id": "Some UUID here",
             "event_type": 0,
-            "ts": "2022-06-04T04:55:36.320514577Z",
+            "ts": "2023-08-29T15:17:52.572370432Z",
             "reason": "Some reason here",
             "css": "Some CSS here"
         }
@@ -1016,7 +1017,7 @@ to false.
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -1037,7 +1038,7 @@ to false.
 
 
 ## Edit Bot
-### PATCH `https://api.fateslist.xyz`/users/{id}/bots
+### PATCH `https://fates-api.select-list.xyz`/users/{id}/bots
 
 Edits a existing bot. 
 
@@ -1053,7 +1054,7 @@ to false.
 
 **Path Parameters**
 
-- **id** => i64 [ex 0]
+- **id** => i64 [0]
 
 
 
@@ -1061,119 +1062,119 @@ to false.
 **Request Body**
 
 - **user** => Struct User 
-	- **id** => string [ex ""]
-	- **username** => string [ex ""]
-	- **disc** => string [ex ""]
-	- **avatar** => string [ex ""]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string [""]
+	- **username** => string [""]
+	- **disc** => string [""]
+	- **avatar** => string [""]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
-- **description** => string [ex ""]
+- **description** => string [""]
 - **tags** => (Array) 
-- **created_at** => string [ex "1970-01-01T00:00:00Z"]
-- **last_updated_at** => string [ex "1970-01-01T00:00:00Z"]
-- **last_stats_post** => string [ex "1970-01-01T00:00:00Z"]
-- **long_description** => string [ex "blah blah blah"]
-- **long_description_raw** => string [ex "blah blah blah unsanitized"]
-- **long_description_type** => i32 [ex 1]
-- **guild_count** => i64 [ex 0]
-- **shard_count** => i64 [ex 493]
-- **user_count** => i64 [ex 0]
+- **created_at** => string ["1970-01-01T00:00:00Z"]
+- **last_updated_at** => string ["1970-01-01T00:00:00Z"]
+- **last_stats_post** => string ["1970-01-01T00:00:00Z"]
+- **long_description** => string ["blah blah blah"]
+- **long_description_raw** => string ["blah blah blah unsanitized"]
+- **long_description_type** => i32 [1]
+- **guild_count** => i64 [0]
+- **shard_count** => i64 [493]
+- **user_count** => i64 [0]
 - **shards** => (Array) 
-- **prefix** => (Optional) string [ex "Some prefix, null = slash command"]
-- **library** => string [ex ""]
-- **invite** => (Optional) string [ex "Raw invite, null = auto-generated. Use invite_link instead"]
-- **invite_link** => string [ex "https://discord.com/api/oauth2/authorize...."]
-- **invite_amount** => i32 [ex 48]
+- **prefix** => (Optional) string ["Some prefix, null = slash command"]
+- **library** => string [""]
+- **invite** => (Optional) string ["Raw invite, null = auto-generated. Use invite_link instead"]
+- **invite_link** => string ["https://discord.com/api/oauth2/authorize...."]
+- **invite_amount** => i32 [48]
 - **owners** => (Array) Struct BotOwner 
 	- **user** => Struct User 
-		- **id** => string [ex ""]
-		- **username** => string [ex ""]
-		- **disc** => string [ex ""]
-		- **avatar** => string [ex ""]
-		- **bot** => bool [ex false]
-		- **status** => string [ex "Unknown"]
+		- **id** => string [""]
+		- **username** => string [""]
+		- **disc** => string [""]
+		- **avatar** => string [""]
+		- **bot** => bool [false]
+		- **status** => string ["Unknown"]
 
 
 
-	- **main** => bool [ex false]
+	- **main** => bool [false]
 
 
 
 - **features** => (Array) Struct Feature 
-	- **id** => string [ex ""]
-	- **name** => string [ex ""]
-	- **viewed_as** => string [ex ""]
-	- **description** => string [ex ""]
+	- **id** => string [""]
+	- **name** => string [""]
+	- **viewed_as** => string [""]
+	- **description** => string [""]
 
 
 
-- **state** => i32 [ex 0]
-- **page_style** => i32 [ex 1]
+- **state** => i32 [0]
+- **page_style** => i32 [1]
 - **extra_links** => Map (key/value)  
 	- **key**
- => string [ex "value"]
+ => string ["value"]
 
 
 
-- **css** => string [ex "<style></style>"]
-- **css_raw** => string [ex "unsanitized css"]
-- **votes** => i64 [ex 0]
-- **total_votes** => i64 [ex 0]
-- **vanity** => string [ex ""]
-- **banner_card** => (Optional) string [ex "https://api.fateslist.xyz/static/botlisticon.webp"]
-- **banner_page** => (Optional) string [ex "https://api.fateslist.xyz/static/botlisticon.webp"]
-- **client_id** => string [ex ""]
+- **css** => string ["<style></style>"]
+- **css_raw** => string ["unsanitized css"]
+- **votes** => i64 [0]
+- **total_votes** => i64 [0]
+- **vanity** => string [""]
+- **banner_card** => (Optional) string ["<api url>/static/botlisticon.webp"]
+- **banner_page** => (Optional) string ["<api url>/static/botlisticon.webp"]
+- **client_id** => string [""]
 - **flags** => (Array) 
 - **action_logs** => (Array) Struct ActionLog 
-	- **user_id** => string [ex ""]
-	- **bot_id** => string [ex ""]
-	- **action** => i32 [ex 0]
-	- **action_time** => string [ex "1970-01-01T00:00:00Z"]
-	- **context** => (Optional) string [ex "Some context as to why the action happened"]
+	- **user_id** => string [""]
+	- **bot_id** => string [""]
+	- **action** => i32 [0]
+	- **action_time** => string ["1970-01-01T00:00:00Z"]
+	- **context** => (Optional) string ["Some context as to why the action happened"]
 
 
 
 - **vpm** => (Optional) (Array) Struct VotesPerMonth 
-	- **votes** => i64 [ex 0]
-	- **ts** => string [ex "1970-01-01T00:00:00Z"]
+	- **votes** => i64 [0]
+	- **ts** => string ["1970-01-01T00:00:00Z"]
 
 
 
-- **uptime_checks_total** => (Optional) i32 [ex 30]
-- **uptime_checks_failed** => (Optional) i32 [ex 19]
+- **uptime_checks_total** => (Optional) i32 [30]
+- **uptime_checks_failed** => (Optional) i32 [19]
 - **commands** => (Array) Struct BotCommand 
-	- **cmd_type** => i32 [ex 0]
+	- **cmd_type** => i32 [0]
 	- **groups** => (Array) 
-	- **name** => string [ex ""]
-	- **vote_locked** => bool [ex false]
-	- **description** => string [ex ""]
+	- **name** => string [""]
+	- **vote_locked** => bool [false]
+	- **description** => string [""]
 	- **args** => (Array) 
 	- **examples** => (Array) 
-	- **premium_only** => bool [ex false]
+	- **premium_only** => bool [false]
 	- **notes** => (Array) 
 	- **doc_link** => None (unknown value type)
 	- **id** => None (unknown value type)
-	- **nsfw** => bool [ex false]
+	- **nsfw** => bool [false]
 
 
 
 - **events** => (Array) Struct BotEvent 
-	- **id** => string [ex "Some UUID here"]
-	- **event_type** => i32 [ex 0]
-	- **ts** => string [ex "2022-06-04T04:55:36.320566243Z"]
-	- **reason** => string [ex "Some reason here"]
-	- **css** => string [ex "Some CSS here"]
+	- **id** => string ["Some UUID here"]
+	- **event_type** => i32 [0]
+	- **ts** => string ["2023-08-29T15:17:52.572525856Z"]
+	- **reason** => string ["Some reason here"]
+	- **css** => string ["Some CSS here"]
 
 
 
-- **webhook** => (Optional) string [ex "This will be redacted for Get Bot endpoint"]
-- **webhook_secret** => (Optional) string [ex "This (along with ``webhook_type``, ``api_token`` and ``webhook_hmac_only``) will be redacted for Get Bot endpoint"]
+- **webhook** => (Optional) string ["This will be redacted for Get Bot endpoint"]
+- **webhook_secret** => (Optional) string ["This (along with ``webhook_type``, ``api_token`` and ``webhook_hmac_only``) will be redacted for Get Bot endpoint"]
 - **webhook_type** => None (unknown value type)
 - **webhook_hmac_only** => None (unknown value type)
-- **api_token** => (Optional) string [ex "This will be redacted for Get Bot endpoint"]
+- **api_token** => (Optional) string ["This will be redacted for Get Bot endpoint"]
 
 
 
@@ -1237,8 +1238,8 @@ to false.
     "votes": 0,
     "total_votes": 0,
     "vanity": "",
-    "banner_card": "https://api.fateslist.xyz/static/botlisticon.webp",
-    "banner_page": "https://api.fateslist.xyz/static/botlisticon.webp",
+    "banner_card": "<api url>/static/botlisticon.webp",
+    "banner_page": "<api url>/static/botlisticon.webp",
     "client_id": "",
     "flags": [],
     "action_logs": [
@@ -1278,7 +1279,7 @@ to false.
         {
             "id": "Some UUID here",
             "event_type": 0,
-            "ts": "2022-06-04T04:55:36.320566243Z",
+            "ts": "2023-08-29T15:17:52.572525856Z",
             "reason": "Some reason here",
             "css": "Some CSS here"
         }
@@ -1294,7 +1295,7 @@ to false.
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -1315,7 +1316,7 @@ to false.
 
 
 ## Transfer Ownership
-### PATCH `https://api.fateslist.xyz`/users/{user_id}/bots/{bot_id}/main-owner
+### PATCH `https://fates-api.select-list.xyz`/users/{user_id}/bots/{bot_id}/main-owner
 
 Transfers bot ownership.
 
@@ -1324,8 +1325,8 @@ You **must** be main owner of the bot to use this endpoint.
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **bot_id** => i64 [ex 0]
+- **user_id** => i64 [0]
+- **bot_id** => i64 [0]
 
 
 
@@ -1333,16 +1334,16 @@ You **must** be main owner of the bot to use this endpoint.
 **Request Body**
 
 - **user** => Struct User 
-	- **id** => string [ex "id here"]
-	- **username** => string [ex "Leave blank"]
-	- **disc** => string [ex "Leave blank"]
-	- **avatar** => string [ex "Leave blank"]
-	- **bot** => bool [ex false]
-	- **status** => string [ex "Unknown"]
+	- **id** => string ["id here"]
+	- **username** => string ["Leave blank"]
+	- **disc** => string ["Leave blank"]
+	- **avatar** => string ["Leave blank"]
+	- **bot** => bool [false]
+	- **status** => string ["Unknown"]
 
 
 
-- **main** => bool [ex true]
+- **main** => bool [true]
 
 
 
@@ -1365,7 +1366,7 @@ You **must** be main owner of the bot to use this endpoint.
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -1386,7 +1387,7 @@ You **must** be main owner of the bot to use this endpoint.
 
 
 ## Delete Bot
-### DELETE `https://api.fateslist.xyz`/users/{user_id}/bots/{bot_id}
+### DELETE `https://fates-api.select-list.xyz`/users/{user_id}/bots/{bot_id}
 
 Deletes a bot.
 
@@ -1394,8 +1395,8 @@ You **must** be main owner of the bot to use this endpoint.
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **bot_id** => i64 [ex 0]
+- **user_id** => i64 [0]
+- **bot_id** => i64 [0]
 
 
 
@@ -1403,7 +1404,7 @@ You **must** be main owner of the bot to use this endpoint.
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
@@ -1424,7 +1425,7 @@ You **must** be main owner of the bot to use this endpoint.
 
 
 ## Get Import Sources
-### GET `https://api.fateslist.xyz`/import-sources
+### GET `https://fates-api.select-list.xyz`/import-sources
 Returns a array of sources that a bot can be imported from.
 
 
@@ -1432,8 +1433,8 @@ Returns a array of sources that a bot can be imported from.
 **Response Body**
 
 - **sources** => (Array) Struct ImportSourceListItem 
-	- **id** => string [ex "Rdl"]
-	- **name** => string [ex "Rovel Bot List"]
+	- **id** => string ["Rdl"]
+	- **name** => string ["Rovel Bot List"]
 
 
 
@@ -1458,20 +1459,20 @@ Returns a array of sources that a bot can be imported from.
 
 
 ## Import Bot
-### POST `https://api.fateslist.xyz`/users/{user_id}/bots/{bot_id}/import?src={source}
+### POST `https://fates-api.select-list.xyz`/users/{user_id}/bots/{bot_id}/import?src={source}
 Imports a bot from a source listed in ``Get Import Sources``
 **Query Parameters**
 
-- **src** => string [ex "Rdl"]
-- **custom_source** => (Optional) string [ex ""]
+- **src** => string ["Rdl"]
+- **custom_source** => (Optional) string [""]
 
 
 
 
 **Path Parameters**
 
-- **user_id** => i64 [ex 0]
-- **bot_id** => i64 [ex 0]
+- **user_id** => i64 [0]
+- **bot_id** => i64 [0]
 
 
 
@@ -1480,7 +1481,7 @@ Imports a bot from a source listed in ``Get Import Sources``
 
 - **ext_data** => (Optional) Map (key/value)  
 	- **key**
- => string [ex "value"]
+ => string ["value"]
 
 
 
@@ -1500,7 +1501,7 @@ Imports a bot from a source listed in ``Get Import Sources``
 
 **Response Body**
 
-- **done** => bool [ex true]
+- **done** => bool [true]
 - **reason** => None (unknown value type)
 - **context** => None (unknown value type)
 
