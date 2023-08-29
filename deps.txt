@@ -7,12 +7,15 @@ python-dateutil
 pydantic
 msgpack
 aiohttp
-aioredis
+redis
 piccolo
 piccolo_admin
 uvicorn
 tomli # maturin doesnt properly define its dependencies
-
+colour
+Pillow
+pyotp
+xkcdpass
 
 # Install below manually
 # git+https://github.com/Rapptz/discord.py

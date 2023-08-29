@@ -26,7 +26,7 @@ from pydantic import BaseModel
 import enums
 
 import aiohttp
-import aioredis
+from redis import asyncio as aioredis
 import orjson
 from discord import Embed
 from fastapi import FastAPI, WebSocket, HTTPException, Request, Response, APIRouter
@@ -120,7 +120,7 @@ async def send_message(msg: dict):
             return res
 
 # Experiment sanity check
-exps_in_api = requests.get("https://api.fateslist.xyz/experiments").json()
+exps_in_api = requests.get("https://fates-api.select-list.xyz/experiments").json()
 
 exps_found = []
 
@@ -1698,7 +1698,7 @@ async def eval_task(data: EvalQuery):
         try:
             return jsonable_encoder(await app.state.db.fetch(data.sql, *arg_list))
         except:
-            return {"error": f"{type(exc): {exc}"}
+            return {"error": f"{type(exc)}: f{exc}"}
     except Exception as exc:
         return str(exc)
 
